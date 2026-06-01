@@ -277,6 +277,53 @@ function buildChart(container, racePoints, drivers, mode, completedRaces) {
   })
 
   svg.addEventListener('mouseleave', hideTip)
+
+  // Touch support: deslizar el dedo muestra el tooltip del punto más cercano
+  const showTipAt = (clientX, clientY) => {
+    const svgRect = svg.getBoundingClientRect()
+    const touchX  = (clientX - svgRect.left) / svgRect.width  * W
+    const touchY  = (clientY - svgRect.top)  / svgRect.height * H
+
+    let nearestI = 0, minDX = Infinity
+    for (let i = 0; i < RACES_KEYS.length; i++) {
+      const d = Math.abs(xScale(i) - touchX)
+      if (d < minDX) { minDX = d; nearestI = i }
+    }
+
+    let nearestS = series[0], minDY = Infinity
+    series.forEach(s => {
+      const d = Math.abs(yScale(s.pts[nearestI]) - touchY)
+      if (d < minDY) { minDY = d; nearestS = s }
+    })
+
+    const s = nearestS, i = nearestI, v = s.pts[i]
+    const raceVal = mode === 'cumulative' ? s.pts[i] - (i > 0 ? s.pts[i - 1] : 0) : v
+
+    let html = `<div class="tip-driver" style="color:${s.color}">${s.driver} — ${RACES_LABEL[i]}</div>`
+    if (RACES_SPRINT[i] && (s.ptsR[i] > 0 || s.ptsS[i] > 0)) {
+      html += `<div class="tip-row"><span class="tip-dot" style="background:${s.color}"></span><span style="color:${s.color}">Carrera: <strong>${s.ptsR[i]} pts</strong></span></div>`
+      html += `<div class="tip-row"><span class="tip-dot" style="background:#FFD700"></span><span style="color:#FFD700">Sprint: <strong>${s.ptsS[i]} pts</strong></span></div>`
+      html += `<div style="margin-top:5px;padding-top:5px;border-top:1px solid #2a2a38;color:#999;font-size:10px">Total: ${raceVal} pts${mode === 'cumulative' ? `  ·  acum. ${v}` : ''}</div>`
+    } else {
+      html += `<div class="tip-row"><span class="tip-dot" style="background:${s.color}"></span><span style="color:${s.color}"><strong>${raceVal} pts</strong>${mode === 'cumulative' ? `<span style="color:#666680;font-size:10px">  ·  acum. ${v}</span>` : ''}</span></div>`
+    }
+
+    const rect = container.getBoundingClientRect()
+    tip.innerHTML = html
+    tip.style.display = 'block'
+    let left = clientX - rect.left + 14
+    let top  = clientY - rect.top  - 10
+    if (left + tip.offsetWidth > rect.width - 8) left = clientX - rect.left - tip.offsetWidth - 14
+    tip.style.left = left + 'px'
+    tip.style.top  = top  + 'px'
+  }
+
+  svg.addEventListener('touchmove', e => {
+    e.preventDefault()
+    showTipAt(e.touches[0].clientX, e.touches[0].clientY)
+  }, { passive: false })
+  svg.addEventListener('touchend', hideTip)
+
   container.appendChild(svg)
 
   // Legend below chart
