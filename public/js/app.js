@@ -565,8 +565,7 @@ function renderEvolucion() {
   if (!selectedDrivers) selectedDrivers = new Set()
 
   set(`
-    <div class="section-title">EVOLUCIÓN</div>
-    <div class="section-sub">Puntos acumulados por carrera${racesLabel ? ` — ${racesLabel}` : ''}</div>
+    <div class="section-title">EVOLUCIÓN DE PUNTAJE</div>
     <div class="chart-controls">
       <div></div>
       <div class="toggle-btns" id="chart-toggle">
