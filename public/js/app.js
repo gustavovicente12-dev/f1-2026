@@ -1072,6 +1072,7 @@ const HIGHLIGHTS = [
   {
     race: 'Gran Premio de Miami', flag: 'us', round: 4,
     videos: [
+      { type: 'Sprint Quali',   id: 'GDUPcJpMJfs' },
       { type: 'Sprint',         id: 'GCaXT0YFRcg' },
       { type: 'Clasificación',  id: 'oCwKNW-P-x8' },
       { type: 'Carrera',        id: '-U9ZZEkjVTU' },
@@ -1081,6 +1082,7 @@ const HIGHLIGHTS = [
     race: 'Gran Premio de Canadá', flag: 'ca', round: 5,
     videos: [
       { type: 'Sprint Quali',   id: 'fVAd57Bvp7A' },
+      { type: 'Sprint',         id: 'l3aB-W19bnc' },
       { type: 'Clasificación',  id: '_Q_7tMaLeDA' },
       { type: 'Carrera',        id: 'JHgPg-P3tjc' },
     ]
