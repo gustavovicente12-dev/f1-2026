@@ -1614,7 +1614,8 @@ a { color: inherit; text-decoration: none; }
   .qual-sidebar       { max-height: 160px; display: flex; overflow-x: auto; overflow-y: hidden; }
   .qual-race-item     { flex-shrink: 0; flex-direction: column; gap: 2px; padding: 8px 10px; border-bottom: none; border-right: 1px solid var(--border); }
   .qual-race-name     { font-size: 11px; }
-  .qual-header, .qual-row { grid-template-columns: 30px 1fr 80px 80px; }
+  .qual-table         { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .qual-header, .qual-row { grid-template-columns: 30px 1fr 75px 75px 75px; min-width: 380px; }
   .qual-team          { display: none; }
   .qual-time.qual-best { display: none; }
   .qual-name          { display: none; }
