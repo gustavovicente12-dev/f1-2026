@@ -1086,7 +1086,7 @@ const HIGHLIGHTS = [
 function renderHighlights() {
   const cards = HIGHLIGHTS.map(gp => {
     const videoCards = gp.videos.map(v => `
-      <div class="hl-video-card" onclick="openHighlight('${v.id}', this)">
+      <div class="hl-video-card" onclick="openHighlight('${v.id}')">
         <div class="hl-thumb-wrap">
           <img class="hl-thumb" src="https://img.youtube.com/vi/${v.id}/mqdefault.jpg" alt="${v.type}" loading="lazy">
           <div class="hl-play-btn">&#9654;&#65038;</div>
@@ -1103,9 +1103,6 @@ function renderHighlights() {
           <span class="hl-gp-name">${gp.race}</span>
         </div>
         <div class="hl-videos-row">${videoCards}</div>
-        <div class="hl-embed-wrap" id="hl-embed-${gp.round}" style="display:none">
-          <iframe class="hl-iframe" src="" frameborder="0" allowfullscreen allow="autoplay; encrypted-media"></iframe>
-        </div>
       </div>
     `
   }).join('')
@@ -1116,25 +1113,8 @@ function renderHighlights() {
   `)
 }
 
-function openHighlight(videoId, el) {
-  const block   = el.closest('.hl-gp-block')
-  const wrap    = block.querySelector('.hl-embed-wrap')
-  const iframe  = wrap.querySelector('iframe')
-  const current = iframe.src.includes(videoId)
-
-  // Cerrar todos los embeds abiertos
-  document.querySelectorAll('.hl-embed-wrap').forEach(w => {
-    w.style.display = 'none'
-    w.querySelector('iframe').src = ''
-  })
-  document.querySelectorAll('.hl-video-card').forEach(c => c.classList.remove('active'))
-
-  if (!current) {
-    iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1`
-    wrap.style.display = 'block'
-    el.classList.add('active')
-    wrap.scrollIntoView({ behavior: 'smooth', block: 'nearest' })
-  }
+function openHighlight(videoId) {
+  window.open(`https://www.youtube.com/watch?v=${videoId}`, '_blank')
 }
 
 // ── Init ───────────────────────────────────────────────────────────
