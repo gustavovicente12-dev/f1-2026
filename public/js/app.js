@@ -54,10 +54,25 @@ const DRIVER_PHOTOS = {
   'STR': `${_F1CDN}/astonmartin/lanstr01/2026astonmartinlanstr01right.webp`,
 }
 
+const TEAM_LOGO_CLASS = {
+  'Mercedes':     'tl-mercedes',
+  'Ferrari':      'tl-ferrari',
+  'McLaren':      'tl-mclaren',
+  'Red Bull':     'tl-redbull',
+  'Alpine':       'tl-alpine',
+  'Haas':         'tl-haas',
+  'Racing Bulls': 'tl-racingbulls',
+  'Williams':     'tl-williams',
+  'Audi':         'tl-audi',
+  'Aston Martin': 'tl-astonmartin',
+  'Cadillac':     'tl-cadillac',
+}
+
 function tl(team, h = 20) {
   const src = TEAM_LOGOS[team]
   if (!src) return ''
-  return `<img src="${src}" alt="${team}" class="team-logo" style="height:${h}px">`
+  const cls = TEAM_LOGO_CLASS[team] || ''
+  return `<img src="${src}" alt="${team}" class="team-logo ${cls}" style="height:${h}px">`
 }
 
 const TAG_ICONS = {

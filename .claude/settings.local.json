@@ -7,7 +7,8 @@
       "PowerShell(if \\(-not $?\\) { \"psql: no instalado\" })",
       "PowerShell(winget install *)",
       "PowerShell(git *)",
-      "PowerShell($env:PATH += \";C:\\\\Program Files\\\\Git\\\\bin\"; cd \"C:\\\\Users\\\\Administrador\\\\Downloads\\\\f1-2026\\\\f1-2026\"; git add .; git commit -m \"feat: click en logo vuelve a Resumen\"; git push)"
+      "PowerShell($env:PATH += \";C:\\\\Program Files\\\\Git\\\\bin\"; cd \"C:\\\\Users\\\\Administrador\\\\Downloads\\\\f1-2026\\\\f1-2026\"; git add .; git commit -m \"feat: click en logo vuelve a Resumen\"; git push)",
+      "PowerShell($env:PATH += \";C:\\\\Program Files\\\\Git\\\\bin\"; cd \"C:\\\\Users\\\\Administrador\\\\Downloads\\\\f1-2026\\\\f1-2026\"; git add .; git commit -m \"feat: logos de escuderias en colores originales via CSS filter\"; git push)"
     ]
   }
 }

@@ -681,6 +681,18 @@ a { color: inherit; text-decoration: none; }
   display: inline-block;
   flex-shrink: 0;
 }
+/* Normalizar a blanco primero, luego aplicar color del equipo */
+.tl-mercedes    { filter: brightness(0) invert(1) sepia(1) saturate(5) hue-rotate(148deg) brightness(1.1); }
+.tl-ferrari     { filter: brightness(0) invert(1) sepia(1) saturate(15) hue-rotate(322deg) brightness(0.95); }
+.tl-mclaren     { filter: brightness(0) invert(1) sepia(1) saturate(12) hue-rotate(2deg) brightness(1.05); }
+.tl-redbull     { filter: brightness(0) invert(1) sepia(1) saturate(5) hue-rotate(187deg) brightness(0.9); }
+.tl-alpine      { filter: brightness(0) invert(1) sepia(1) saturate(10) hue-rotate(172deg) brightness(0.85); }
+.tl-haas        { filter: brightness(0) invert(1) brightness(0.74); }
+.tl-racingbulls { filter: brightness(0) invert(1) sepia(1) saturate(5) hue-rotate(197deg) brightness(1.15); }
+.tl-williams    { filter: brightness(0) invert(1) sepia(1) saturate(8) hue-rotate(172deg) brightness(0.9); }
+.tl-audi        { filter: brightness(0) invert(1) sepia(1) saturate(3) hue-rotate(246deg) brightness(1.1); }
+.tl-astonmartin { filter: brightness(0) invert(1) sepia(1) saturate(3) hue-rotate(135deg) brightness(0.75); }
+.tl-cadillac    { filter: brightness(0) invert(1) brightness(0.62); }
 .team-cell {
   display: inline-flex;
   align-items: center;
