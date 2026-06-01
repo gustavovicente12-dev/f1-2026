@@ -1078,6 +1078,9 @@ const HIGHLIGHTS = [
   {
     race: 'Gran Premio de Canadá', flag: 'ca', round: 5,
     videos: [
+      { type: 'Sprint Quali',   id: 'd2urQDKqZhU' },
+      { type: 'Sprint',         id: 'l3aB-W19bnc' },
+      { type: 'Clasificación',  id: 'rjLDgDc0td4' },
       { type: 'Carrera',        id: 'QrRh2vOJQbw' },
     ]
   },
