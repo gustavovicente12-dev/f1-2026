@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell(supabase --version 2>$null)",
+      "PowerShell(psql --version 2>$null)",
+      "PowerShell(if \\(-not $?\\) { \"supabase CLI: no instalado\" })",
+      "PowerShell(if \\(-not $?\\) { \"psql: no instalado\" })",
+      "PowerShell(winget install *)",
+      "PowerShell(git *)"
+    ]
+  }
+}
