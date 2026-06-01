@@ -536,6 +536,7 @@ function renderConstructores() {
           <div class="constructor-color-bar" style="background:${tc(c.name)}"></div>
           <div class="constructor-logo-wrap">${tl(c.name, 30)}</div>
           <div>
+            <div class="constructor-name">${c.name}</div>
             <div class="constructor-drivers">${c.driver1} · ${c.driver2}</div>
           </div>
           <div class="constructor-engine">${c.engine}</div>
