@@ -14,19 +14,18 @@ const TEAM_COLORS = {
   'Cadillac':     '#9E9E9E',
 }
 
-const _WK = 'https://upload.wikimedia.org/wikipedia'
 const TEAM_LOGOS = {
-  'Ferrari':      `${_WK}/en/thumb/3/36/Prancing_horse.svg/250px-Prancing_horse.svg.png`,
-  'McLaren':      `${_WK}/commons/thumb/c/cb/McLaren_Speedmark.svg/250px-McLaren_Speedmark.svg.png`,
-  'Mercedes':     `${_WK}/commons/thumb/f/fb/Mercedes_AMG_Petronas_F1_Logo.svg/250px-Mercedes_AMG_Petronas_F1_Logo.svg.png`,
-  'Red Bull':     `${_WK}/commons/thumb/a/a4/Red_Bull_Racing_-_2021_Logo.svg/250px-Red_Bull_Racing_-_2021_Logo.svg.png`,
-  'Alpine':       `${_WK}/commons/thumb/7/7e/Alpine_F1_Team_Logo.svg/250px-Alpine_F1_Team_Logo.svg.png`,
-  'Haas':         `${_WK}/commons/thumb/5/54/Haas_F1_Team_Logo.svg/250px-Haas_F1_Team_Logo.svg.png`,
-  'Racing Bulls': `${_WK}/en/thumb/2/2b/VCARB_F1_logo.svg/250px-VCARB_F1_logo.svg.png`,
-  'Williams':     `${_WK}/en/3/3a/Williams_logo_%28old%29.png`,
-  'Audi':         `${_WK}/commons/thumb/9/9f/Audi-Logo_2016.svg/250px-Audi-Logo_2016.svg.png`,
-  'Aston Martin': `${_WK}/commons/0/03/Aston_Martin_F1_Team_logo_2024.jpg`,
-  'Cadillac':     `${_WK}/commons/thumb/d/d8/Cadillac_Formula_1_Team_logo.png/250px-Cadillac_Formula_1_Team_logo.png`,
+  'Mercedes':     '/img/teams/mercedes.webp',
+  'Ferrari':      '/img/teams/ferrari.webp',
+  'McLaren':      '/img/teams/mclaren.webp',
+  'Red Bull':     '/img/teams/redbull.webp',
+  'Alpine':       '/img/teams/alpine.webp',
+  'Racing Bulls': '/img/teams/racingbulls.webp',
+  'Haas':         '/img/teams/haas.webp',
+  'Williams':     '/img/teams/williams.webp',
+  'Audi':         '/img/teams/audi.webp',
+  'Aston Martin': '/img/teams/astonmartin.webp',
+  'Cadillac':     '/img/teams/cadillac.webp',
 }
 
 const _F1CDN = 'https://media.formula1.com/image/upload/c_lfill,w_200/q_auto/d_common:f1:2026:fallback:driver:2026fallbackdriverright.webp/v1740000001/common/f1/2026'
@@ -55,24 +54,11 @@ const DRIVER_PHOTOS = {
   'STR': `${_F1CDN}/astonmartin/lanstr01/2026astonmartinlanstr01right.webp`,
 }
 
-const TEAM_LOGO_CLASS = {
-  'Mercedes':     'tl-mercedes',
-  'Ferrari':      'tl-ferrari',
-  'McLaren':      'tl-mclaren',
-  'Red Bull':     'tl-redbull',
-  'Alpine':       'tl-alpine',
-  'Haas':         'tl-haas',
-  'Racing Bulls': 'tl-racingbulls',
-  'Williams':     'tl-williams',
-  'Audi':         'tl-audi',
-  'Aston Martin': 'tl-astonmartin',
-  'Cadillac':     'tl-cadillac',
-}
 
 function tl(team, h = 20) {
   const src = TEAM_LOGOS[team]
   if (!src) return ''
-  return `<span class="team-logo-pill"><img src="${src}" alt="${team}" class="team-logo" style="height:${h}px"></span>`
+  return `<img src="${src}" alt="${team}" class="team-logo" style="height:${h}px">`
 }
 
 const TAG_ICONS = {
