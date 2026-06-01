@@ -1049,42 +1049,40 @@ const HIGHLIGHTS = [
   {
     race: 'Gran Premio de Australia', flag: 'au', round: 1,
     videos: [
-      { type: 'Clasificación',  id: 'QztBs3IZBHk' },
-      { type: 'Carrera',        id: 'lL_d84cN1UY' },
+      { type: 'Clasificación',  id: '1iXRuEdIZSw' },
+      { type: 'Carrera',        id: 'DvOV11ZQMH8' },
     ]
   },
   {
     race: 'Gran Premio de China', flag: 'cn', round: 2,
     videos: [
-      { type: 'Sprint Quali',   id: '-LnHUI4DxRs' },
-      { type: 'Sprint',         id: 'ynRZQ9EBfRI' },
-      { type: 'Clasificación',  id: '75-_kMm0mb8' },
-      { type: 'Carrera',        id: 't8HpVlineX4' },
+      { type: 'Sprint Quali',   id: 's4lD5EuZ_os' },
+      { type: 'Sprint',         id: 'blTR3vezOho' },
+      { type: 'Clasificación',  id: 'WZyOSHdAlts' },
+      { type: 'Carrera',        id: 'LcCRelVuBG0' },
     ]
   },
   {
     race: 'Gran Premio de Japón', flag: 'jp', round: 3,
     videos: [
-      { type: 'Clasificación',  id: 'oZH_7pYJPTE' },
-      { type: 'Carrera',        id: 'oAtYfF0_4-I' },
+      { type: 'Clasificación',  id: '3leBj4EWVck' },
+      { type: 'Carrera',        id: '634fQpZqEIg' },
     ]
   },
   {
     race: 'Gran Premio de Miami', flag: 'us', round: 4,
     videos: [
-      { type: 'Sprint Quali',   id: 'zV_UPEsZl-s' },
-      { type: 'Sprint',         id: '0XlphgCNbwQ' },
-      { type: 'Clasificación',  id: 'XD4iZQoyHrg' },
-      { type: 'Carrera',        id: '5gYys4GL7S0' },
+      { type: 'Sprint',         id: 'GCaXT0YFRcg' },
+      { type: 'Clasificación',  id: 'oCwKNW-P-x8' },
+      { type: 'Carrera',        id: '-U9ZZEkjVTU' },
     ]
   },
   {
     race: 'Gran Premio de Canadá', flag: 'ca', round: 5,
     videos: [
-      { type: 'Sprint Quali',   id: 'd2urQDKqZhU' },
-      { type: 'Sprint',         id: 'l3aB-W19bnc' },
-      { type: 'Clasificación',  id: 'rjLDgDc0td4' },
-      { type: 'Carrera',        id: 'QrRh2vOJQbw' },
+      { type: 'Sprint Quali',   id: 'fVAd57Bvp7A' },
+      { type: 'Clasificación',  id: '_Q_7tMaLeDA' },
+      { type: 'Carrera',        id: 'JHgPg-P3tjc' },
     ]
   },
 ]
