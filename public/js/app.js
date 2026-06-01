@@ -77,16 +77,32 @@ let chartMode = 'per-race'
 
 function safeArr(val) { return Array.isArray(val) ? val : [] }
 
+async function fetchWithRetry(url, fallback, attempts = 4) {
+  for (let i = 0; i < attempts; i++) {
+    try {
+      const r = await fetch(url)
+      if (!r.ok) throw new Error(`HTTP ${r.status}`)
+      const data = await r.json()
+      const empty = Array.isArray(data) ? data.length === 0 : Object.keys(data).length === 0
+      if (empty && i < attempts - 1) throw new Error('empty')
+      return data
+    } catch {
+      if (i < attempts - 1) await new Promise(res => setTimeout(res, 1500 * (i + 1)))
+    }
+  }
+  return fallback
+}
+
 async function fetchAll() {
   const [stats, drivers, constructors, calendar, results, news, history, qualifying] = await Promise.all([
-    fetch('/api/stats').then(r => r.json()).catch(() => ({})),
-    fetch('/api/drivers').then(r => r.json()).catch(() => []),
-    fetch('/api/constructors').then(r => r.json()).catch(() => []),
-    fetch('/api/calendar').then(r => r.json()).catch(() => []),
-    fetch('/api/results').then(r => r.json()).catch(() => []),
-    fetch('/api/news').then(r => r.json()).catch(() => []),
-    fetch('/api/history').then(r => r.json()).catch(() => []),
-    fetch('/api/qualifying').then(r => r.json()).catch(() => []),
+    fetchWithRetry('/api/stats', {}),
+    fetchWithRetry('/api/drivers', []),
+    fetchWithRetry('/api/constructors', []),
+    fetchWithRetry('/api/calendar', []),
+    fetchWithRetry('/api/results', []),
+    fetchWithRetry('/api/news', []),
+    fetchWithRetry('/api/history', []),
+    fetchWithRetry('/api/qualifying', []),
   ])
   appData = {
     stats:        (stats && !stats.error) ? stats : {},
@@ -1126,17 +1142,26 @@ function openHighlight(videoId) {
 // ── Init ───────────────────────────────────────────────────────────
 
 async function init() {
+  const main = document.getElementById('main')
+  let dot = 0
+  const timer = setInterval(() => {
+    dot = (dot + 1) % 4
+    main.innerHTML = `<div class="loading-state"><div class="spinner"></div><p>Cargando temporada 2026${'.'.repeat(dot)}</p></div>`
+  }, 600)
   try {
     await fetchAll()
+    clearInterval(timer)
     setupTabs()
     renderHeaderInfo()
     renderTab('resumen')
   } catch (err) {
-    document.getElementById('main').innerHTML = `
+    clearInterval(timer)
+    main.innerHTML = `
       <div class="container">
         <div class="loading-state">
-          <p style="color:var(--red)">Error al cargar datos: ${err.message}</p>
-          <p style="color:var(--muted);font-size:12px">¿Está el servidor corriendo y la base de datos conectada?</p>
+          <p style="color:var(--red)">Error al cargar datos</p>
+          <p style="color:var(--muted);font-size:12px">Verificá tu conexión e intentá de nuevo.</p>
+          <button onclick="location.reload()" style="margin-top:12px;padding:8px 20px;background:var(--red);color:#fff;border:none;border-radius:6px;cursor:pointer;font-size:13px">Reintentar</button>
         </div>
       </div>
     `
