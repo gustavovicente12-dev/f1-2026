@@ -1056,6 +1056,8 @@ const HIGHLIGHTS = [
   {
     race: 'Gran Premio de China', flag: 'cn', round: 2,
     videos: [
+      { type: 'Sprint Quali',   id: '-LnHUI4DxRs' },
+      { type: 'Sprint',         id: 'ynRZQ9EBfRI' },
       { type: 'Clasificación',  id: '75-_kMm0mb8' },
       { type: 'Carrera',        id: 't8HpVlineX4' },
     ]
@@ -1070,7 +1072,8 @@ const HIGHLIGHTS = [
   {
     race: 'Gran Premio de Miami', flag: 'us', round: 4,
     videos: [
-      { type: 'Sprint',         id: 'zV_UPEsZl-s' },
+      { type: 'Sprint Quali',   id: 'zV_UPEsZl-s' },
+      { type: 'Sprint',         id: '0XlphgCNbwQ' },
       { type: 'Clasificación',  id: 'XD4iZQoyHrg' },
       { type: 'Carrera',        id: '5gYys4GL7S0' },
     ]
