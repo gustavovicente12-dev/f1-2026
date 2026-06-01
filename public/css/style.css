@@ -1466,6 +1466,25 @@ a { color: inherit; text-decoration: none; }
 .res-type-tab  { background:var(--surf2); border:1px solid var(--border); border-radius:6px; padding:6px 16px; font-size:12px; font-weight:600; color:var(--muted); cursor:pointer; transition:all .15s; }
 .res-type-tab.active, .res-type-tab:hover { background:var(--red); color:#fff; border-color:var(--red); }
 
+/* ─── Highlights ─────────────────────────────────────────────────── */
+.hl-grid          { display: flex; flex-direction: column; gap: 24px; margin-top: 8px; }
+.hl-gp-block      { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; }
+.hl-gp-header     { display: flex; align-items: center; gap: 10px; padding: 12px 16px; border-bottom: 1px solid var(--border); }
+.hl-gp-round      { font-family: var(--font-mono); font-size: 11px; color: var(--muted); min-width: 24px; }
+.hl-gp-name       { font-weight: 700; font-size: 14px; }
+.hl-videos-row    { display: flex; gap: 12px; padding: 12px 16px; flex-wrap: wrap; }
+.hl-video-card    { cursor: pointer; display: flex; flex-direction: column; gap: 6px; }
+.hl-video-card.active .hl-thumb-wrap { border-color: var(--red); }
+.hl-thumb-wrap    { position: relative; border-radius: 6px; overflow: hidden; border: 2px solid transparent; transition: border-color .2s; width: 180px; }
+.hl-thumb-wrap:hover { border-color: var(--red); }
+.hl-thumb         { width: 180px; height: 101px; object-fit: cover; display: block; }
+.hl-play-btn      { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; background: rgba(0,0,0,.35); font-size: 28px; color: #fff; opacity: 0; transition: opacity .2s; }
+.hl-thumb-wrap:hover .hl-play-btn,
+.hl-video-card.active .hl-play-btn { opacity: 1; }
+.hl-video-type    { font-family: var(--font-mono); font-size: 10px; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; text-align: center; }
+.hl-embed-wrap    { padding: 0 16px 16px; }
+.hl-iframe        { width: 100%; aspect-ratio: 16/9; border-radius: 6px; background: #000; }
+
 /* ─── Historia ───────────────────────────────────────────────────── */
 .hist-stats-row    { margin: 24px 0 36px; }
 .hist-top-label    { font-family: var(--font-title); font-size: 13px; color: var(--muted); letter-spacing: 2px; margin-bottom: 12px; }

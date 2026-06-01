@@ -147,6 +147,7 @@ function renderTab(tab) {
     case 'circuitos':    renderCircuitos(); break
     case 'reglamento':   renderReglamento(); break
     case 'historia':     renderHistoria(); break
+    case 'highlights':   renderHighlights(); break
   }
 }
 
@@ -1040,6 +1041,100 @@ function renderHistoria() {
 
     ${decadesHtml}
   `)
+}
+
+// ── HIGHLIGHTS ─────────────────────────────────────────────────────
+
+const HIGHLIGHTS = [
+  {
+    race: 'Gran Premio de Australia', flag: 'au', round: 1,
+    videos: [
+      { type: 'Carrera',        id: 'lL_d84cN1UY' },
+      { type: 'Clasificación',  id: 'QztBs3IZBHk' },
+    ]
+  },
+  {
+    race: 'Gran Premio de China', flag: 'cn', round: 2,
+    videos: [
+      { type: 'Carrera',        id: 't8HpVlineX4' },
+      { type: 'Clasificación',  id: '75-_kMm0mb8' },
+    ]
+  },
+  {
+    race: 'Gran Premio de Japón', flag: 'jp', round: 3,
+    videos: [
+      { type: 'Carrera',        id: 'oAtYfF0_4-I' },
+      { type: 'Clasificación',  id: 'oZH_7pYJPTE' },
+    ]
+  },
+  {
+    race: 'Gran Premio de Miami', flag: 'us', round: 4,
+    videos: [
+      { type: 'Carrera',        id: '5gYys4GL7S0' },
+      { type: 'Clasificación',  id: 'XD4iZQoyHrg' },
+      { type: 'Sprint',         id: 'zV_UPEsZl-s' },
+    ]
+  },
+  {
+    race: 'Gran Premio de Canadá', flag: 'ca', round: 5,
+    videos: [
+      { type: 'Carrera',        id: 'QrRh2vOJQbw' },
+    ]
+  },
+]
+
+function renderHighlights() {
+  const cards = HIGHLIGHTS.map(gp => {
+    const videoCards = gp.videos.map(v => `
+      <div class="hl-video-card" onclick="openHighlight('${v.id}', this)">
+        <div class="hl-thumb-wrap">
+          <img class="hl-thumb" src="https://img.youtube.com/vi/${v.id}/mqdefault.jpg" alt="${v.type}" loading="lazy">
+          <div class="hl-play-btn">&#9654;&#65038;</div>
+        </div>
+        <div class="hl-video-type">${v.type}</div>
+      </div>
+    `).join('')
+
+    return `
+      <div class="hl-gp-block">
+        <div class="hl-gp-header">
+          <span class="hl-gp-round">R${gp.round}</span>
+          ${flagImg(gp.flag, 20)}
+          <span class="hl-gp-name">${gp.race}</span>
+        </div>
+        <div class="hl-videos-row">${videoCards}</div>
+        <div class="hl-embed-wrap" id="hl-embed-${gp.round}" style="display:none">
+          <iframe class="hl-iframe" src="" frameborder="0" allowfullscreen allow="autoplay; encrypted-media"></iframe>
+        </div>
+      </div>
+    `
+  }).join('')
+
+  set(`
+    <div class="section-title">HIGHLIGHTS</div>
+    <div class="hl-grid">${cards}</div>
+  `)
+}
+
+function openHighlight(videoId, el) {
+  const block   = el.closest('.hl-gp-block')
+  const wrap    = block.querySelector('.hl-embed-wrap')
+  const iframe  = wrap.querySelector('iframe')
+  const current = iframe.src.includes(videoId)
+
+  // Cerrar todos los embeds abiertos
+  document.querySelectorAll('.hl-embed-wrap').forEach(w => {
+    w.style.display = 'none'
+    w.querySelector('iframe').src = ''
+  })
+  document.querySelectorAll('.hl-video-card').forEach(c => c.classList.remove('active'))
+
+  if (!current) {
+    iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1`
+    wrap.style.display = 'block'
+    el.classList.add('active')
+    wrap.scrollIntoView({ behavior: 'smooth', block: 'nearest' })
+  }
 }
 
 // ── Init ───────────────────────────────────────────────────────────
