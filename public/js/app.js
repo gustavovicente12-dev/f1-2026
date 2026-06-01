@@ -745,6 +745,7 @@ function renderCalendario() {
         <div>
           <div class="cal-name">${r.name}</div>
           <div class="cal-circuit">${r.circuit}</div>
+          <div class="cal-date-mobile">${fmtDate(r.date_str)}</div>
         </div>
         <div class="cal-date">${fmtDate(r.date_str)}</div>
         <div>${r.has_sprint ? '<span class="cal-sprint">SPRINT</span>' : ''}</div>

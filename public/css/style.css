@@ -846,6 +846,13 @@ a { color: inherit; text-decoration: none; }
   text-align: center;
   white-space: nowrap;
 }
+.cal-date-mobile {
+  display: none;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--muted);
+  margin-top: 2px;
+}
 .cal-sprint {
   font-family: var(--font-mono);
   font-size: 9px;
@@ -1526,7 +1533,8 @@ a { color: inherit; text-decoration: none; }
   .tyre-grid          { grid-template-columns: 1fr 1fr; }
 
   .cal-row            { grid-template-columns: 30px 28px 1fr auto; }
-  .cal-date, .cal-circuit, .cal-sprint { display: none; }
+  .cal-date, .cal-sprint { display: none; }
+  .cal-date-mobile    { display: block; }
 
   /* Tables scrollable */
   .standings-table    { display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; }
