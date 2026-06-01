@@ -16,17 +16,17 @@ const TEAM_COLORS = {
 
 const _WK = 'https://upload.wikimedia.org/wikipedia'
 const TEAM_LOGOS = {
-  'Ferrari':      `${_WK}/en/thumb/d/df/Scuderia_Ferrari_HP_logo_24.svg/250px-Scuderia_Ferrari_HP_logo_24.svg.png`,
-  'McLaren':      `${_WK}/en/0/03/McLarenF1Team.png`,
-  'Mercedes':     `${_WK}/commons/thumb/f/fc/Mercedes-AMG_Petronas_F1_Team_logo_%282026%29.svg/250px-Mercedes-AMG_Petronas_F1_Team_logo_%282026%29.svg.png`,
-  'Red Bull':     `${_WK}/en/thumb/f/fa/Red_Bull_Racing_Logo_2026.svg/250px-Red_Bull_Racing_Logo_2026.svg.png`,
-  'Alpine':       `${_WK}/commons/thumb/4/4a/BWT_Alpine_F1_Team_Logo.png/250px-BWT_Alpine_F1_Team_Logo.png`,
-  'Haas':         `${_WK}/commons/thumb/1/18/TGR_Haas_F1_Team_Logo_%282026%29.svg/250px-TGR_Haas_F1_Team_Logo_%282026%29.svg.png`,
+  'Ferrari':      `${_WK}/en/thumb/3/36/Prancing_horse.svg/250px-Prancing_horse.svg.png`,
+  'McLaren':      `${_WK}/commons/thumb/c/cb/McLaren_Speedmark.svg/250px-McLaren_Speedmark.svg.png`,
+  'Mercedes':     `${_WK}/commons/thumb/f/fb/Mercedes_AMG_Petronas_F1_Logo.svg/250px-Mercedes_AMG_Petronas_F1_Logo.svg.png`,
+  'Red Bull':     `${_WK}/commons/thumb/a/a4/Red_Bull_Racing_-_2021_Logo.svg/250px-Red_Bull_Racing_-_2021_Logo.svg.png`,
+  'Alpine':       `${_WK}/commons/thumb/7/7e/Alpine_F1_Team_Logo.svg/250px-Alpine_F1_Team_Logo.svg.png`,
+  'Haas':         `${_WK}/commons/thumb/5/54/Haas_F1_Team_Logo.svg/250px-Haas_F1_Team_Logo.svg.png`,
   'Racing Bulls': `${_WK}/en/thumb/2/2b/VCARB_F1_logo.svg/250px-VCARB_F1_logo.svg.png`,
-  'Williams':     `${_WK}/commons/thumb/1/12/Atlassian_Williams_F1_Team_logo.svg/250px-Atlassian_Williams_F1_Team_logo.svg.png`,
+  'Williams':     `${_WK}/en/3/3a/Williams_logo_%28old%29.png`,
   'Audi':         `${_WK}/commons/thumb/9/9f/Audi-Logo_2016.svg/250px-Audi-Logo_2016.svg.png`,
-  'Aston Martin': `${_WK}/en/thumb/1/15/Aston_Martin_Aramco_2024_logo.png/250px-Aston_Martin_Aramco_2024_logo.png`,
-  'Cadillac':     `${_WK}/en/thumb/b/bc/Cadillac_Formula_1_Team_Logo_%282025%29.svg/250px-Cadillac_Formula_1_Team_Logo_%282025%29.svg.png`,
+  'Aston Martin': `${_WK}/commons/0/03/Aston_Martin_F1_Team_logo_2024.jpg`,
+  'Cadillac':     `${_WK}/commons/thumb/d/d8/Cadillac_Formula_1_Team_logo.png/250px-Cadillac_Formula_1_Team_logo.png`,
 }
 
 const _F1CDN = 'https://media.formula1.com/image/upload/c_lfill,w_200/q_auto/d_common:f1:2026:fallback:driver:2026fallbackdriverright.webp/v1740000001/common/f1/2026'

@@ -10,7 +10,10 @@
       "PowerShell($env:PATH += \";C:\\\\Program Files\\\\Git\\\\bin\"; cd \"C:\\\\Users\\\\Administrador\\\\Downloads\\\\f1-2026\\\\f1-2026\"; git add .; git commit -m \"feat: click en logo vuelve a Resumen\"; git push)",
       "PowerShell($env:PATH += \";C:\\\\Program Files\\\\Git\\\\bin\"; cd \"C:\\\\Users\\\\Administrador\\\\Downloads\\\\f1-2026\\\\f1-2026\"; git add .; git commit -m \"feat: logos de escuderias en colores originales via CSS filter\"; git push)",
       "WebFetch(domain:en.wikipedia.org)",
-      "PowerShell($env:PATH += \";C:\\\\Program Files\\\\Git\\\\bin\"; cd \"C:\\\\Users\\\\Administrador\\\\Downloads\\\\f1-2026\\\\f1-2026\"; git add .; git commit -m \"feat: logos de escuderias con colores originales desde Wikipedia\"; git push)"
+      "PowerShell($env:PATH += \";C:\\\\Program Files\\\\Git\\\\bin\"; cd \"C:\\\\Users\\\\Administrador\\\\Downloads\\\\f1-2026\\\\f1-2026\"; git add .; git commit -m \"feat: logos de escuderias con colores originales desde Wikipedia\"; git push)",
+      "WebFetch(domain:commons.wikimedia.org)",
+      "WebFetch(domain:www.google.com)",
+      "PowerShell($env:PATH += \";C:\\\\Program Files\\\\Git\\\\bin\"; cd \"C:\\\\Users\\\\Administrador\\\\Downloads\\\\f1-2026\\\\f1-2026\"; git add .; git commit -m \"feat: logos limpios sin publicidad de patrocinadores\"; git push)"
     ]
   }
 }
