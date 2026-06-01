@@ -1049,30 +1049,30 @@ const HIGHLIGHTS = [
   {
     race: 'Gran Premio de Australia', flag: 'au', round: 1,
     videos: [
-      { type: 'Carrera',        id: 'lL_d84cN1UY' },
       { type: 'Clasificación',  id: 'QztBs3IZBHk' },
+      { type: 'Carrera',        id: 'lL_d84cN1UY' },
     ]
   },
   {
     race: 'Gran Premio de China', flag: 'cn', round: 2,
     videos: [
-      { type: 'Carrera',        id: 't8HpVlineX4' },
       { type: 'Clasificación',  id: '75-_kMm0mb8' },
+      { type: 'Carrera',        id: 't8HpVlineX4' },
     ]
   },
   {
     race: 'Gran Premio de Japón', flag: 'jp', round: 3,
     videos: [
-      { type: 'Carrera',        id: 'oAtYfF0_4-I' },
       { type: 'Clasificación',  id: 'oZH_7pYJPTE' },
+      { type: 'Carrera',        id: 'oAtYfF0_4-I' },
     ]
   },
   {
     race: 'Gran Premio de Miami', flag: 'us', round: 4,
     videos: [
-      { type: 'Carrera',        id: '5gYys4GL7S0' },
-      { type: 'Clasificación',  id: 'XD4iZQoyHrg' },
       { type: 'Sprint',         id: 'zV_UPEsZl-s' },
+      { type: 'Clasificación',  id: 'XD4iZQoyHrg' },
+      { type: 'Carrera',        id: '5gYys4GL7S0' },
     ]
   },
   {
