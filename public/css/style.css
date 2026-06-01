@@ -1616,8 +1616,8 @@ a { color: inherit; text-decoration: none; }
   .qual-race-name     { font-size: 11px; }
   .qual-table         { overflow-x: unset; }
   /* Clasificación GP: pos | piloto | Q1 | Q2 | Q3 — sin scroll */
-  .qual-header, .qual-row { grid-template-columns: 26px 1fr 52px 52px 52px; min-width: unset; }
-  .qual-time          { font-size: 10px; }
+  .qual-header, .qual-row { grid-template-columns: 26px 1fr 62px 62px 62px; min-width: unset; }
+  .qual-time          { font-size: 10px; text-align: center; }
   .qual-team          { display: none; }
   .qual-name          { display: none; }
   /* Resultados: pos | piloto | pts — ocultar equipo */
