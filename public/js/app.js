@@ -72,8 +72,7 @@ const TEAM_LOGO_CLASS = {
 function tl(team, h = 20) {
   const src = TEAM_LOGOS[team]
   if (!src) return ''
-  const cls = TEAM_LOGO_CLASS[team] || ''
-  return `<img src="${src}" alt="${team}" class="team-logo ${cls}" style="height:${h}px">`
+  return `<span class="team-logo-pill"><img src="${src}" alt="${team}" class="team-logo" style="height:${h}px"></span>`
 }
 
 const TAG_ICONS = {

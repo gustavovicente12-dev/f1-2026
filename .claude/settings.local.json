@@ -13,7 +13,8 @@
       "PowerShell($env:PATH += \";C:\\\\Program Files\\\\Git\\\\bin\"; cd \"C:\\\\Users\\\\Administrador\\\\Downloads\\\\f1-2026\\\\f1-2026\"; git add .; git commit -m \"feat: logos de escuderias con colores originales desde Wikipedia\"; git push)",
       "WebFetch(domain:commons.wikimedia.org)",
       "WebFetch(domain:www.google.com)",
-      "PowerShell($env:PATH += \";C:\\\\Program Files\\\\Git\\\\bin\"; cd \"C:\\\\Users\\\\Administrador\\\\Downloads\\\\f1-2026\\\\f1-2026\"; git add .; git commit -m \"feat: logos limpios sin publicidad de patrocinadores\"; git push)"
+      "PowerShell($env:PATH += \";C:\\\\Program Files\\\\Git\\\\bin\"; cd \"C:\\\\Users\\\\Administrador\\\\Downloads\\\\f1-2026\\\\f1-2026\"; git add .; git commit -m \"feat: logos limpios sin publicidad de patrocinadores\"; git push)",
+      "PowerShell($env:PATH += \";C:\\\\Program Files\\\\Git\\\\bin\"; cd \"C:\\\\Users\\\\Administrador\\\\Downloads\\\\f1-2026\\\\f1-2026\"; git add .; git commit -m \"fix: logos en pastilla blanca para mostrar colores correctamente\"; git push)"
     ]
   }
 }
