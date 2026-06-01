@@ -14,18 +14,19 @@ const TEAM_COLORS = {
   'Cadillac':     '#9E9E9E',
 }
 
+const _WK = 'https://upload.wikimedia.org/wikipedia'
 const TEAM_LOGOS = {
-  'Mercedes':     '/img/teams/mercedes.webp',
-  'Ferrari':      '/img/teams/ferrari.webp',
-  'McLaren':      '/img/teams/mclaren.webp',
-  'Red Bull':     '/img/teams/redbull.webp',
-  'Alpine':       '/img/teams/alpine.webp',
-  'Racing Bulls': '/img/teams/racingbulls.webp',
-  'Haas':         '/img/teams/haas.webp',
-  'Williams':     '/img/teams/williams.webp',
-  'Audi':         '/img/teams/audi.webp',
-  'Aston Martin': '/img/teams/astonmartin.webp',
-  'Cadillac':     '/img/teams/cadillac.webp',
+  'Ferrari':      `${_WK}/en/thumb/d/df/Scuderia_Ferrari_HP_logo_24.svg/250px-Scuderia_Ferrari_HP_logo_24.svg.png`,
+  'McLaren':      `${_WK}/en/0/03/McLarenF1Team.png`,
+  'Mercedes':     `${_WK}/commons/thumb/f/fc/Mercedes-AMG_Petronas_F1_Team_logo_%282026%29.svg/250px-Mercedes-AMG_Petronas_F1_Team_logo_%282026%29.svg.png`,
+  'Red Bull':     `${_WK}/en/thumb/f/fa/Red_Bull_Racing_Logo_2026.svg/250px-Red_Bull_Racing_Logo_2026.svg.png`,
+  'Alpine':       `${_WK}/commons/thumb/4/4a/BWT_Alpine_F1_Team_Logo.png/250px-BWT_Alpine_F1_Team_Logo.png`,
+  'Haas':         `${_WK}/commons/thumb/1/18/TGR_Haas_F1_Team_Logo_%282026%29.svg/250px-TGR_Haas_F1_Team_Logo_%282026%29.svg.png`,
+  'Racing Bulls': `${_WK}/en/thumb/2/2b/VCARB_F1_logo.svg/250px-VCARB_F1_logo.svg.png`,
+  'Williams':     `${_WK}/commons/thumb/1/12/Atlassian_Williams_F1_Team_logo.svg/250px-Atlassian_Williams_F1_Team_logo.svg.png`,
+  'Audi':         `${_WK}/commons/thumb/9/9f/Audi-Logo_2016.svg/250px-Audi-Logo_2016.svg.png`,
+  'Aston Martin': `${_WK}/en/thumb/1/15/Aston_Martin_Aramco_2024_logo.png/250px-Aston_Martin_Aramco_2024_logo.png`,
+  'Cadillac':     `${_WK}/en/thumb/b/bc/Cadillac_Formula_1_Team_Logo_%282025%29.svg/250px-Cadillac_Formula_1_Team_Logo_%282025%29.svg.png`,
 }
 
 const _F1CDN = 'https://media.formula1.com/image/upload/c_lfill,w_200/q_auto/d_common:f1:2026:fallback:driver:2026fallbackdriverright.webp/v1740000001/common/f1/2026'
