@@ -1,5 +1,11 @@
 const router = require('express').Router()
-const { YoutubeTranscript } = require('youtube-transcript')
+
+let YoutubeTranscript
+try {
+  YoutubeTranscript = require('youtube-transcript').YoutubeTranscript
+} catch (e) {
+  console.error('[teamradio] youtube-transcript no disponible:', e.message)
+}
 
 // Radio Rewind oficiales por carrera
 const RADIO_REWIND_SEED = {
@@ -138,6 +144,7 @@ function buildMessages(entries) {
 
 async function loadTranscript(videoId) {
   if (_cache.has(videoId)) return _cache.get(videoId)
+  if (!YoutubeTranscript) return null
 
   try {
     const entries = await YoutubeTranscript.fetchTranscript(videoId, { lang: 'en' })

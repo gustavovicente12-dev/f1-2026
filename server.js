@@ -32,5 +32,14 @@ app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'index.html'))
 })
 
+// Error handler global — evita que un crash en una ruta tire el servidor
+app.use((err, req, res, next) => {
+  console.error('[error]', err.message)
+  res.status(500).json({ error: 'Error interno' })
+})
+
+process.on('uncaughtException', err => console.error('[uncaughtException]', err.message))
+process.on('unhandledRejection', err => console.error('[unhandledRejection]', err?.message))
+
 const PORT = process.env.PORT || 3000
 app.listen(PORT, () => console.log(`F1 2026 Dashboard → http://localhost:${PORT}`))

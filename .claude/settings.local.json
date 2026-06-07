@@ -30,7 +30,8 @@
       "Bash(curl -s \"https://api.openf1.org/v1/team_radio?session_key=11234&limit=2\")",
       "Bash(curl *)",
       "Bash(npm list *)",
-      "Bash(npm install *)"
+      "Bash(npm install *)",
+      "Bash(kill %1)"
     ]
   },
   "hooks": {
