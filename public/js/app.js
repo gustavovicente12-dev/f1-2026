@@ -95,7 +95,7 @@ async function fetchWithRetry(url, fallback, attempts = 4) {
 }
 
 async function fetchAll() {
-  const [stats, drivers, constructors, calendar, results, news, history, qualifying, highlights, teamradio] = await Promise.all([
+  const [stats, drivers, constructors, calendar, results, news, history, qualifying, highlights] = await Promise.all([
     fetchWithRetry('/api/stats', {}),
     fetchWithRetry('/api/drivers', []),
     fetchWithRetry('/api/constructors', []),
@@ -105,7 +105,6 @@ async function fetchAll() {
     fetchWithRetry('/api/history', []),
     fetchWithRetry('/api/qualifying', []),
     fetchWithRetry('/api/highlights', []),
-    fetchWithRetry('/api/teamradio', []),
   ])
   appData = {
     stats:        (stats && !stats.error) ? stats : {},
@@ -117,7 +116,7 @@ async function fetchAll() {
     history:      safeArr(history),
     qualifying:   safeArr(qualifying),
     highlights:   safeArr(highlights),
-    teamradio:    safeArr(teamradio),
+    teamradio:    [],
   }
 }
 

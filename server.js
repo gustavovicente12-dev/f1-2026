@@ -18,7 +18,8 @@ app.use('/api/stats',        require('./routes/stats'))
 app.use('/api/history',      require('./routes/history'))
 app.use('/api/qualifying',   require('./routes/qualifying'))
 app.use('/api/highlights',   require('./routes/highlights'))
-app.use('/api/teamradio',    require('./routes/teamradio'))
+// teamradio temporalmente desactivado para diagnóstico
+// app.use('/api/teamradio',    require('./routes/teamradio'))
 
 // Health check
 app.get('/api/health', async (req, res) => {
