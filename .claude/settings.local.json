@@ -21,7 +21,9 @@
       "Bash(git commit -m ' *)",
       "Bash(git push *)",
       "Skill(update-config)",
-      "Bash(node -e \"const fs=require\\('fs'\\); JSON.parse\\(fs.readFileSync\\('.claude/settings.local.json','utf8'\\)\\); console.log\\('JSON válido'\\)\")"
+      "Bash(node -e \"const fs=require\\('fs'\\); JSON.parse\\(fs.readFileSync\\('.claude/settings.local.json','utf8'\\)\\); console.log\\('JSON válido'\\)\")",
+      "WebFetch(domain:f1calendar.com)",
+      "WebFetch(domain:tracinginsights.com)"
     ]
   },
   "hooks": {
