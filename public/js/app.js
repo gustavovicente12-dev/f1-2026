@@ -95,7 +95,7 @@ async function fetchWithRetry(url, fallback, attempts = 4) {
 }
 
 async function fetchAll() {
-  const [stats, drivers, constructors, calendar, results, news, history, qualifying] = await Promise.all([
+  const [stats, drivers, constructors, calendar, results, news, history, qualifying, highlights] = await Promise.all([
     fetchWithRetry('/api/stats', {}),
     fetchWithRetry('/api/drivers', []),
     fetchWithRetry('/api/constructors', []),
@@ -104,6 +104,7 @@ async function fetchAll() {
     fetchWithRetry('/api/news', []),
     fetchWithRetry('/api/history', []),
     fetchWithRetry('/api/qualifying', []),
+    fetchWithRetry('/api/highlights', []),
   ])
   appData = {
     stats:        (stats && !stats.error) ? stats : {},
@@ -114,6 +115,7 @@ async function fetchAll() {
     news:         safeArr(news),
     history:      safeArr(history),
     qualifying:   safeArr(qualifying),
+    highlights:   safeArr(highlights),
   }
 }
 
@@ -1171,7 +1173,8 @@ const HIGHLIGHTS = [
 ]
 
 function renderHighlights() {
-  const cards = HIGHLIGHTS.map(gp => {
+  const data = (appData.highlights && appData.highlights.length) ? appData.highlights : HIGHLIGHTS
+  const cards = data.map(gp => {
     const videoCards = gp.videos.map(v => `
       <div class="hl-video-card" onclick="openHighlight('${v.id}')">
         <div class="hl-thumb-wrap">

@@ -25,7 +25,8 @@
       "WebFetch(domain:f1calendar.com)",
       "WebFetch(domain:tracinginsights.com)",
       "WebFetch(domain:api.openf1.org)",
-      "WebFetch(domain:openf1.org)"
+      "WebFetch(domain:openf1.org)",
+      "Bash(node *)"
     ]
   },
   "hooks": {
