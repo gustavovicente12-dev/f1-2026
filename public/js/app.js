@@ -72,6 +72,7 @@ const TAG_ICONS = {
 let appData = {}
 let currentTab = 'resumen'
 let chartMode = 'per-race'
+let _lastFetch = Date.now()
 
 // ── Fetch ──────────────────────────────────────────────────────────
 
@@ -133,6 +134,23 @@ function set(html) {
 
 // ── Header info ────────────────────────────────────────────────────
 
+function updateLiveCounter() {
+  const el = document.getElementById('live-counter')
+  if (!el) return
+  const secs = Math.round((Date.now() - _lastFetch) / 1000)
+  el.textContent = secs < 60 ? `${secs}s` : `${Math.floor(secs / 60)}m`
+}
+
+function startLivePolling() {
+  setInterval(async () => {
+    await fetchAll()
+    _lastFetch = Date.now()
+    renderHeaderInfo()
+    renderTab(currentTab)
+  }, 30000)
+  setInterval(updateLiveCounter, 1000)
+}
+
 function renderHeaderInfo() {
   const { stats } = appData
   if (!stats || !stats.leader) return
@@ -143,6 +161,10 @@ function renderHeaderInfo() {
       <span>Líder: <strong>${stats.leader.short || stats.leader.name}</strong> ${stats.leader.pts} pts</span>
     </div>
     ${next ? `<div class="header-pill">Próxima: <strong>${flagImg(next.flag, 16)} ${next.name}</strong> · ${fmtDate(next.date_str)}</div>` : ''}
+    <div class="header-pill">
+      <span class="dot-live"></span>
+      <span>EN VIVO · act. <span id="live-counter">0s</span></span>
+    </div>
   `
 }
 
@@ -1165,10 +1187,12 @@ async function init() {
   }, 600)
   try {
     await fetchAll()
+    _lastFetch = Date.now()
     clearInterval(timer)
     setupTabs()
     renderHeaderInfo()
     renderTab('resumen')
+    startLivePolling()
   } catch (err) {
     clearInterval(timer)
     main.innerHTML = `
