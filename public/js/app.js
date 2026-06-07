@@ -1124,42 +1124,48 @@ const HIGHLIGHTS = [
   {
     race: 'Gran Premio de Australia', flag: 'au', round: 1,
     videos: [
-      { type: 'Clasificación',  id: '1iXRuEdIZSw' },
-      { type: 'Carrera',        id: 'DvOV11ZQMH8' },
+      { type: 'Clasificación',  id: 'Bx2uJVt9KG8' },
+      { type: 'Carrera',        id: 'ovJKA-FMJUg' },
     ]
   },
   {
     race: 'Gran Premio de China', flag: 'cn', round: 2,
     videos: [
-      { type: 'Sprint Quali',   id: 's4lD5EuZ_os' },
-      { type: 'Sprint',         id: 'blTR3vezOho' },
-      { type: 'Clasificación',  id: 'WZyOSHdAlts' },
-      { type: 'Carrera',        id: 'LcCRelVuBG0' },
+      { type: 'Sprint Quali',   id: '-LnHUI4DxRs' },
+      { type: 'Sprint',         id: 'ynRZQ9EBfRI' },
+      { type: 'Clasificación',  id: '75-_kMm0mb8' },
+      { type: 'Carrera',        id: 't8HpVlineX4' },
     ]
   },
   {
     race: 'Gran Premio de Japón', flag: 'jp', round: 3,
     videos: [
-      { type: 'Clasificación',  id: '3leBj4EWVck' },
-      { type: 'Carrera',        id: '634fQpZqEIg' },
+      { type: 'Clasificación',  id: 'EW92sQPZuWk' },
+      { type: 'Carrera',        id: 'oAtYfF0_4-I' },
     ]
   },
   {
     race: 'Gran Premio de Miami', flag: 'us', round: 4,
     videos: [
-      { type: 'Sprint Quali',   id: 'GDUPcJpMJfs' },
-      { type: 'Sprint',         id: 'GCaXT0YFRcg' },
-      { type: 'Clasificación',  id: 'oCwKNW-P-x8' },
-      { type: 'Carrera',        id: '-U9ZZEkjVTU' },
+      { type: 'Sprint Quali',   id: 'zV_UPEsZl-s' },
+      { type: 'Sprint',         id: '0XlphgCNbwQ' },
+      { type: 'Clasificación',  id: '83GJM1S0FnE' },
+      { type: 'Carrera',        id: '5gYys4GL7S0' },
     ]
   },
   {
     race: 'Gran Premio de Canadá', flag: 'ca', round: 5,
     videos: [
-      { type: 'Sprint Quali',   id: 'fVAd57Bvp7A' },
+      { type: 'Sprint Quali',   id: 'd2urQDKqZhU' },
       { type: 'Sprint',         id: 'l3aB-W19bnc' },
-      { type: 'Clasificación',  id: '_Q_7tMaLeDA' },
-      { type: 'Carrera',        id: 'JHgPg-P3tjc' },
+      { type: 'Clasificación',  id: 'rjLDgDc0td4' },
+      { type: 'Carrera',        id: 'QrRh2vOJQbw' },
+    ]
+  },
+  {
+    race: 'Gran Premio de Mónaco', flag: 'mc', round: 6,
+    videos: [
+      { type: 'Clasificación',  id: 'xmk0j-HdgwY' },
     ]
   },
 ]
