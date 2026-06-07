@@ -141,13 +141,38 @@ function updateLiveCounter() {
   el.textContent = secs < 60 ? `${secs}s` : `${Math.floor(secs / 60)}m`
 }
 
-function startLivePolling() {
-  setInterval(async () => {
+// Returns true if a race, qualifying, sprint, or SQ session is currently running or ended within the last 30 min
+function isSessionActive() {
+  const now    = Date.now()
+  const BUFFER = 30 * 60 * 1000
+  const DUR    = { race: 2.5 * 3600e3, qualifying: 1.5 * 3600e3, sprint: 1 * 3600e3, sq: 1 * 3600e3 }
+  for (const race of (appData.calendar || [])) {
+    const s = race.sessions
+    if (!s) continue
+    for (const key of ['race', 'qualifying', 'sprint', 'sq']) {
+      if (!s[key]?.utc) continue
+      if (now >= s[key].utc && now <= s[key].utc + DUR[key] + BUFFER) return true
+    }
+  }
+  return false
+}
+
+let _pollTimer = null
+
+function scheduleNextPoll() {
+  clearTimeout(_pollTimer)
+  const delay = isSessionActive() ? 60 * 1000 : 10 * 60 * 1000
+  _pollTimer = setTimeout(async () => {
     await fetchAll()
     _lastFetch = Date.now()
     renderHeaderInfo()
     renderTab(currentTab)
-  }, 30000)
+    scheduleNextPoll()
+  }, delay)
+}
+
+function startLivePolling() {
+  scheduleNextPoll()
   setInterval(updateLiveCounter, 1000)
 }
 
@@ -161,10 +186,7 @@ function renderHeaderInfo() {
       <span>Líder: <strong>${stats.leader.short || stats.leader.name}</strong> ${stats.leader.pts} pts</span>
     </div>
     ${next ? `<div class="header-pill">Próxima: <strong>${flagImg(next.flag, 16)} ${next.name}</strong> · ${fmtDate(next.date_str)}</div>` : ''}
-    <div class="header-pill">
-      <span class="dot-live"></span>
-      <span>EN VIVO · act. <span id="live-counter">0s</span></span>
-    </div>
+    <div class="header-pill" title="Última actualización">act. <span id="live-counter">0s</span></div>
   `
 }
 

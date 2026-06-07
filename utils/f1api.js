@@ -137,7 +137,7 @@ function utcToART(dateStr, timeStr) {
   const hh  = String(art.getUTCHours()).padStart(2, '0')
   const mm  = String(art.getUTCMinutes()).padStart(2, '0')
   const DAYS = ['Dom','Lun','Mar','Mié','Jue','Vie','Sáb']
-  return { time: `${hh}:${mm}`, day: DAYS[art.getUTCDay()] }
+  return { time: `${hh}:${mm}`, day: DAYS[art.getUTCDay()], utc: dt.getTime() }
 }
 
 function raceShort(raceName) {
