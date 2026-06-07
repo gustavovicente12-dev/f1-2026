@@ -23,7 +23,9 @@
       "Skill(update-config)",
       "Bash(node -e \"const fs=require\\('fs'\\); JSON.parse\\(fs.readFileSync\\('.claude/settings.local.json','utf8'\\)\\); console.log\\('JSON válido'\\)\")",
       "WebFetch(domain:f1calendar.com)",
-      "WebFetch(domain:tracinginsights.com)"
+      "WebFetch(domain:tracinginsights.com)",
+      "WebFetch(domain:api.openf1.org)",
+      "WebFetch(domain:openf1.org)"
     ]
   },
   "hooks": {
