@@ -1414,6 +1414,20 @@ a { color: inherit; text-decoration: none; }
 .cal-row-clickable { cursor:pointer; }
 .cal-row-clickable:hover { background:rgba(255,255,255,.04); }
 
+/* ─── Horarios de sesiones ───────────────────────────────────────── */
+.cal-sessions { display:flex; flex-wrap:wrap; gap:4px 10px; margin-top:6px; }
+.ses-pill { display:flex; align-items:center; gap:4px; font-family:var(--font-mono); font-size:11px; }
+.ses-tag {
+  font-size:9px; font-weight:700; padding:1px 5px; border-radius:3px;
+  background:var(--surf2); color:var(--muted); letter-spacing:.5px;
+}
+.ses-tag.ses-qual   { background:rgba(0,210,255,.2);  color:var(--cyan); }
+.ses-tag.ses-race   { background:rgba(225,6,0,.25);   color:#ff4d4d; }
+.ses-tag.ses-sprint { background:rgba(255,215,0,.2);  color:var(--gold); }
+.ses-tag.ses-sq     { background:rgba(255,215,0,.1);  color:var(--gold); opacity:.7; }
+.ses-day  { color:var(--muted); font-size:9px; }
+.ses-time { color:var(--text);  font-weight:600; }
+
 /* ─── Clasificaciones ────────────────────────────────────────────── */
 .qual-layout       { display:grid; grid-template-columns:220px 1fr; gap:16px; margin-top:8px; }
 .qual-sidebar      { background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); overflow-y:auto; max-height:620px; }

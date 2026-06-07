@@ -129,6 +129,17 @@ function normTeam(name) {
   return MAP[name] || name
 }
 
+function utcToART(dateStr, timeStr) {
+  if (!dateStr || !timeStr) return null
+  const dt = new Date(`${dateStr}T${timeStr}`)
+  if (isNaN(dt.getTime())) return null
+  const art = new Date(dt.getTime() - 3 * 60 * 60 * 1000)
+  const hh  = String(art.getUTCHours()).padStart(2, '0')
+  const mm  = String(art.getUTCMinutes()).padStart(2, '0')
+  const DAYS = ['Dom','Lun','Mar','Mié','Jue','Vie','Sáb']
+  return { time: `${hh}:${mm}`, day: DAYS[art.getUTCDay()] }
+}
+
 function raceShort(raceName) {
   return RACE_SHORT[raceName] || raceName.replace(' Grand Prix','')
 }
@@ -218,6 +229,15 @@ async function fetchSchedule() {
     if (isNext) foundNext = true
     const status = isPast ? 'done' : isNext ? 'next' : 'upcoming'
     const isMadrid = r.Circuit.circuitName === 'Madring'
+    const sessions = {
+      fp1:        utcToART(r.FirstPractice?.date,    r.FirstPractice?.time),
+      fp2:        utcToART(r.SecondPractice?.date,   r.SecondPractice?.time),
+      fp3:        utcToART(r.ThirdPractice?.date,    r.ThirdPractice?.time),
+      sq:         utcToART(r.SprintQualifying?.date, r.SprintQualifying?.time),
+      sprint:     utcToART(r.Sprint?.date,           r.Sprint?.time),
+      qualifying: utcToART(r.Qualifying?.date,       r.Qualifying?.time),
+      race:       utcToART(r.date,                   r.time),
+    }
     return {
       round:      +r.round,
       flag:       COUNTRY_FLAGS[r.Circuit.Location.country] || '🏁',
@@ -227,6 +247,7 @@ async function fetchSchedule() {
       status,
       winner:     winnerByRound[r.round] || null,
       has_sprint: !!r.Sprint,
+      sessions,
     }
   })
 }

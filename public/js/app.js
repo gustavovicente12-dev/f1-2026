@@ -738,6 +738,19 @@ function renderNoticias() {
 
 // ── CALENDARIO ─────────────────────────────────────────────────────
 
+function renderSessions(r) {
+  const s = r.sessions
+  if (!s || r.status === 'done' || r.status === 'cancelled') return ''
+  const pill = (label, cls, ses) => ses
+    ? `<div class="ses-pill"><span class="ses-tag ${cls}">${label}</span><span class="ses-day">${ses.day}</span><span class="ses-time">${ses.time}</span></div>`
+    : ''
+  return `<div class="cal-sessions">${
+    r.has_sprint
+      ? pill('FP1','',s.fp1) + pill('SQ','ses-sq',s.sq) + pill('SPRINT','ses-sprint',s.sprint) + pill('CLASI','ses-qual',s.qualifying) + pill('CARRERA','ses-race',s.race)
+      : pill('FP1','',s.fp1) + pill('FP2','',s.fp2) + pill('FP3','',s.fp3) + pill('CLASI','ses-qual',s.qualifying) + pill('CARRERA','ses-race',s.race)
+  }</div>`
+}
+
 function renderCalendario() {
   const cal = appData.calendar || []
 
@@ -762,6 +775,7 @@ function renderCalendario() {
         <div>
           <div class="cal-name">${r.name}</div>
           <div class="cal-circuit">${r.circuit}</div>
+          ${renderSessions(r)}
           <div class="cal-date-mobile">${fmtDate(r.date_str)}</div>
         </div>
         <div class="cal-date">${fmtDate(r.date_str)}</div>
