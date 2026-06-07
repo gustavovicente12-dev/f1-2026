@@ -5,7 +5,7 @@ const { apiFetch, fetchSchedule, normTeam } = require('../utils/f1api')
 router.get('/', async (req, res) => {
   try {
     const schedule = await fetchSchedule()
-    const done = schedule.filter(r => r.status === 'done')
+    const done = schedule.filter(r => r.status === 'done' || r.status === 'next')
 
     const sessions = await Promise.all(done.map(async r => {
       const [qualJson, sprintJson] = await Promise.all([

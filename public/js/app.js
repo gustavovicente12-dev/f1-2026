@@ -724,7 +724,7 @@ function renderNoticias() {
       <div class="news-summary">${n.summary}</div>
       <div class="news-footer">
         <span>${n.source || ''}</span>
-        <span>${fmtDate(n.published_date)}</span>
+        <span>${n.published_date}</span>
       </div>
     </div>
   `).join('')
