@@ -26,7 +26,9 @@
       "WebFetch(domain:tracinginsights.com)",
       "WebFetch(domain:api.openf1.org)",
       "WebFetch(domain:openf1.org)",
-      "Bash(node *)"
+      "Bash(node *)",
+      "Bash(curl -s \"https://api.openf1.org/v1/team_radio?session_key=11234&limit=2\")",
+      "Bash(curl *)"
     ]
   },
   "hooks": {
