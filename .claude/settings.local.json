@@ -15,7 +15,28 @@
       "WebFetch(domain:www.google.com)",
       "PowerShell($env:PATH += \";C:\\\\Program Files\\\\Git\\\\bin\"; cd \"C:\\\\Users\\\\Administrador\\\\Downloads\\\\f1-2026\\\\f1-2026\"; git add .; git commit -m \"feat: logos limpios sin publicidad de patrocinadores\"; git push)",
       "PowerShell($env:PATH += \";C:\\\\Program Files\\\\Git\\\\bin\"; cd \"C:\\\\Users\\\\Administrador\\\\Downloads\\\\f1-2026\\\\f1-2026\"; git add .; git commit -m \"fix: logos en pastilla blanca para mostrar colores correctamente\"; git push)",
-      "WebSearch"
+      "WebSearch",
+      "WebFetch(domain:api.jolpi.ca)",
+      "Bash(git add *)",
+      "Bash(git commit -m ' *)",
+      "Bash(git push *)",
+      "Skill(update-config)",
+      "Bash(node -e \"const fs=require\\('fs'\\); JSON.parse\\(fs.readFileSync\\('.claude/settings.local.json','utf8'\\)\\); console.log\\('JSON válido'\\)\")"
+    ]
+  },
+  "hooks": {
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "cd /c/Users/Administrador/Downloads/f1-2026/f1-2026 && git add -A && if ! git diff --cached --quiet; then git commit -m 'auto: actualización automática' && git push; fi",
+            "shell": "bash",
+            "timeout": 60,
+            "statusMessage": "Subiendo cambios a GitHub..."
+          }
+        ]
+      }
     ]
   }
 }
