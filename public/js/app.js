@@ -262,6 +262,7 @@ function renderResumen() {
       <div class="hero-value">${flagImg(nextRace?.flag, 20)} ${nextRace?.name || '—'}</div>
       <div class="hero-sub">${nextRace?.circuit || ''}</div>
       <div class="hero-pts" style="color:var(--cyan)">${fmtDate(nextRace?.date_str)}</div>
+      ${nextRace ? renderSessions(nextRace) : ''}
     </div>
   `
 
