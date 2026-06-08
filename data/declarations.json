@@ -1,0 +1,62 @@
+[
+  {
+    "id": 1,
+    "race": "Australia",
+    "round": 1,
+    "date": "2026-03-16",
+    "driver": "Lando Norris",
+    "code": "NOR",
+    "team": "McLaren",
+    "quote": "El coche fue absolutamente increíble hoy. El equipo hizo un trabajo perfecto en los boxes y eso marcó la diferencia. Me siento muy bien, es el mejor comienzo de temporada que hemos tenido."
+  },
+  {
+    "id": 2,
+    "race": "Australia",
+    "round": 1,
+    "date": "2026-03-16",
+    "driver": "George Russell",
+    "code": "RUS",
+    "team": "Mercedes",
+    "quote": "Fue una batalla dura hasta el final. Sabíamos que McLaren era rápido, pero en algún momento del año los vamos a alcanzar. El coche tiene potencial, solo necesitamos seguir desarrollando."
+  },
+  {
+    "id": 3,
+    "race": "China",
+    "round": 2,
+    "date": "2026-03-23",
+    "driver": "Max Verstappen",
+    "code": "VER",
+    "team": "Red Bull",
+    "quote": "Finalmente volvimos a la pelea. El coche funcionó de manera diferente aquí, encontramos el setup correcto y se notó. Quiero que cada carrera sea así."
+  },
+  {
+    "id": 4,
+    "race": "Japón",
+    "round": 3,
+    "date": "2026-04-06",
+    "driver": "Charles Leclerc",
+    "code": "LEC",
+    "team": "Ferrari",
+    "quote": "Suzuka siempre es especial. El Ferrari respondió exactamente como queríamos en estas curvas tan técnicas. Estamos en el camino correcto."
+  },
+  {
+    "id": 5,
+    "race": "Miami",
+    "round": 4,
+    "date": "2026-05-04",
+    "driver": "Oscar Piastri",
+    "code": "PIA",
+    "team": "McLaren",
+    "quote": "No voy a mentir, cuando vi los números en la vuelta de clasificación no lo podía creer. Convertirlo en victoria en carrera hace todo más especial todavía."
+  },
+  {
+    "id": 6,
+    "race": "Canadá",
+    "round": 5,
+    "date": "2026-06-08",
+    "driver": "Lewis Hamilton",
+    "code": "HAM",
+    "team": "Ferrari",
+    "quote": "Montreal siempre me da algo especial. Con el Ferrari fue diferente, más técnico, pero el equipo trabajó toda la noche para encontrar el balance correcto y se notó en pista."
+  }
+]

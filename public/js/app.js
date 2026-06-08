@@ -101,7 +101,7 @@ async function fetchWithRetry(url, fallback, attempts = 4) {
 }
 
 async function fetchAll() {
-  const [stats, drivers, constructors, calendar, results, news, history, qualifying, highlights] = await Promise.all([
+  const [stats, drivers, constructors, calendar, results, news, history, qualifying, highlights, declarations] = await Promise.all([
     fetchWithRetry('/api/stats', {}),
     fetchWithRetry('/api/drivers', []),
     fetchWithRetry('/api/constructors', []),
@@ -111,6 +111,7 @@ async function fetchAll() {
     fetchWithRetry('/api/history', []),
     fetchWithRetry('/api/qualifying', []),
     fetchWithRetry('/api/highlights', []),
+    fetchWithRetry('/api/declarations', []),
   ])
   appData = {
     stats:        (stats && !stats.error) ? stats : {},
@@ -122,6 +123,7 @@ async function fetchAll() {
     history:      safeArr(history),
     qualifying:   safeArr(qualifying),
     highlights:   safeArr(highlights),
+    declarations: safeArr(declarations),
     teamradio:    [],
   }
 }
@@ -216,8 +218,9 @@ function renderTab(tab) {
     case 'circuitos':    renderCircuitos(); break
     case 'reglamento':   renderReglamento(); break
     case 'historia':     renderHistoria(); break
-    case 'highlights':   renderHighlights(); break
-    case 'charlas':      renderCharlas(); break
+    case 'highlights':     renderHighlights(); break
+    case 'charlas':        renderCharlas(); break
+    case 'declaraciones':  renderDeclaraciones(); break
   }
 }
 
@@ -862,6 +865,74 @@ function renderNoticias() {
     <div class="section-sub">Últimas novedades de la parrilla — Temporada 2026</div>
     <div class="news-grid">${cards}</div>
   `)
+}
+
+// ── DECLARACIONES ─────────────────────────────────────────────────
+
+let declFilter = 'all'
+
+function renderDeclaraciones() {
+  const decls = appData.declarations || []
+
+  const flagMap = {}
+  ;(appData.drivers || []).forEach(d => { flagMap[d.name] = d.flag })
+
+  // Build race list for filter
+  const races = []
+  const seen  = new Set()
+  decls.forEach(d => {
+    if (!seen.has(d.round)) {
+      seen.add(d.round)
+      races.push({ round: d.round, race: d.race })
+    }
+  })
+  races.sort((a, b) => b.round - a.round)
+
+  const filtered = declFilter === 'all' ? decls : decls.filter(d => d.round === declFilter)
+
+  const filterBtns = [{ round: 'all', race: 'Todas' }, ...races].map(r => `
+    <button class="decl-filter-btn ${declFilter === r.round ? 'active' : ''}" data-round="${r.round}">
+      ${r.round === 'all' ? r.race : `R${r.round} · ${r.race}`}
+    </button>
+  `).join('')
+
+  const cards = filtered.length ? filtered.map(d => {
+    const color   = tc(d.team)
+    const photo   = DRIVER_PHOTOS[d.code] || ''
+    const flagCode = flagMap[d.driver] || ''
+    return `
+      <div class="decl-card" style="--tc:${color}">
+        <div class="decl-driver-bar">
+          ${photo ? `<img class="decl-photo" src="${photo}" alt="${d.code}">` : ''}
+          <div class="decl-driver-info">
+            <div class="decl-driver-name">
+              ${flagImg(flagCode, 16)}
+              ${tl(d.team, 18)}
+              <span>${d.driver}</span>
+            </div>
+            <div class="decl-team" style="color:${color}">${d.team}</div>
+          </div>
+          <div class="decl-race-badge">R${d.round} · ${d.race}</div>
+        </div>
+        <div class="decl-quote">"${d.quote}"</div>
+        <div class="decl-date">${fmtDate(d.date)}</div>
+      </div>
+    `
+  }).join('') : '<p style="color:var(--muted);padding:48px;text-align:center;font-size:13px">Sin declaraciones para este GP.</p>'
+
+  set(`
+    <div class="section-title">DECLARACIONES</div>
+    <div class="section-sub">Palabras de los pilotos tras cada carrera — Temporada 2026</div>
+    <div class="decl-filters">${filterBtns}</div>
+    <div class="decl-grid">${cards}</div>
+  `)
+
+  document.querySelector('.decl-filters').addEventListener('click', e => {
+    const btn = e.target.closest('.decl-filter-btn')
+    if (!btn) return
+    declFilter = btn.dataset.round === 'all' ? 'all' : Number(btn.dataset.round)
+    renderDeclaraciones()
+  })
 }
 
 // ── CALENDARIO ─────────────────────────────────────────────────────
