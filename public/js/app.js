@@ -69,6 +69,12 @@ const TAG_ICONS = {
   transfer:  '🔄',
 }
 
+// Penalidades por carrera — actualizar manualmente después de cada GP
+// Formato: { 'Nombre Carrera': { race: { 'Nombre Piloto': '+5s' }, sprint: { ... } } }
+const RACE_PENALTIES = {
+  // Ejemplo: 'Canadá': { race: { 'Max Verstappen': '+5s' } },
+}
+
 let appData = {}
 let currentTab = 'resumen'
 let chartMode = 'per-race'
@@ -336,10 +342,16 @@ function renderResultados(activeRace, activeType) {
     .filter(r => r.race_name === race.name && r.race_type === type)
     .sort((a, b) => a.pos - b.pos)
 
+  const penalties = (RACE_PENALTIES[race.name] || {})[type] || {}
+
   const rows = raceResults.length
     ? raceResults.map(r => {
-        const color  = tc(r.team)
-        const pClass = posClass(r.pos)
+        const color   = tc(r.team)
+        const pClass  = posClass(r.pos)
+        const penalty = penalties[r.driver_name]
+        const ptsHtml = r.dnf
+          ? '<span class="dnf-badge">DNF</span>'
+          : `${r.pts} pts${penalty ? ` <span class="penalty-badge">${penalty}</span>` : ''}`
         return `
           <div class="qual-row ${pClass} ${r.dnf ? 'result-dnf' : ''}" data-driver="${r.driver_name}" style="cursor:pointer">
             <div class="qual-pos ${pClass}">${r.pos}</div>
@@ -351,7 +363,7 @@ function renderResultados(activeRace, activeType) {
               ${r.fastest_lap ? '<span class="fastest-icon" title="Vuelta rápida">⚡</span>' : ''}
             </div>
             <div class="qual-team res-team" data-team="${r.team}" style="color:${color};cursor:pointer">${tl(r.team,18)} ${r.team}</div>
-            <div class="res-pts">${r.dnf ? '<span class="dnf-badge">DNF</span>' : r.pts + ' pts'}</div>
+            <div class="res-pts">${ptsHtml}</div>
           </div>
         `
       }).join('')

@@ -571,6 +571,16 @@ a { color: inherit; text-decoration: none; }
   padding: 1px 5px;
   border-radius: 3px;
 }
+.penalty-badge {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--red);
+  background: rgba(225, 6, 0, 0.15);
+  padding: 1px 5px;
+  border-radius: 3px;
+  margin-left: 4px;
+}
 
 /* ─── Evolución / Chart ──────────────────────────────────────────── */
 .chart-controls {
