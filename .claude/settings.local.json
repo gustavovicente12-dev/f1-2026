@@ -31,7 +31,10 @@
       "Bash(curl *)",
       "Bash(npm list *)",
       "Bash(npm install *)",
-      "Bash(kill %1)"
+      "Bash(kill %1)",
+      "Bash(grep -Hm1 ^description: 'C:\\\\Users\\\\Administrador\\\\Downloads\\\\f1-2026\\\\f1-2026/.claude/skills/*/SKILL.md')",
+      "Bash(npm run *)",
+      "Bash(python3 -c \"import sys,json; d=json.load\\(sys.stdin\\); races=list\\(dict.fromkeys\\(x['race_name'] for x in d\\)\\); print\\('Carreras:', races\\); print\\('Total filas:', len\\(d\\)\\)\")"
     ]
   },
   "hooks": {
