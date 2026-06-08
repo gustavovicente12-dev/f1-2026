@@ -47,6 +47,7 @@ create table if not exists race_results (
   race_type   text default 'race',  -- 'race' | 'sprint'
   pos         int,
   driver_name text,
+  driver_code text,
   team        text,
   pts         int default 0,
   fastest_lap boolean default false,
@@ -59,7 +60,9 @@ create table if not exists race_points (
   australia   int default 0,
   china       int default 0,
   japan       int default 0,
-  miami       int default 0
+  miami       int default 0,
+  canada      int default 0,
+  monaco      int default 0
 );
 
 create table if not exists news (
@@ -70,3 +73,8 @@ create table if not exists news (
   source         text,
   published_date text
 );
+
+-- Migraciones: correr si las tablas ya existen
+alter table race_results add column if not exists driver_code text;
+alter table race_points   add column if not exists canada int default 0;
+alter table race_points   add column if not exists monaco int default 0;
