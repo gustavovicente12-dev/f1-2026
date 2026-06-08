@@ -1,15 +1,11 @@
-const express  = require('express')
-const router   = express.Router()
-const { supabase } = require('../db/supabase')
+const express = require('express')
+const router  = express.Router()
+const { fetchSchedule, fetchAllResults } = require('../utils/f1api')
 
 router.get('/', async (req, res) => {
   try {
-    const { data, error } = await supabase
-      .from('race_results')
-      .select('*')
-      .order('pos')
-    if (error) throw new Error(error.message)
-    res.json(data || [])
+    const schedule = await fetchSchedule()
+    res.json(await fetchAllResults(schedule))
   } catch (e) {
     res.status(500).json({ error: e.message })
   }
