@@ -344,6 +344,7 @@ function renderResultados(activeRace, activeType) {
             <div class="qual-pos ${pClass}">${r.pos}</div>
             <div class="qual-driver" style="border-left:3px solid ${color}">
               ${flagImg(driverFlagMap[r.driver_name] || '', 16)}
+              ${tl(r.team, 18)}
               <span class="qual-code">${r.driver_code || ''}</span>
               <span class="qual-name">${r.driver_name}</span>
               ${r.fastest_lap ? '<span class="fastest-icon" title="Vuelta rápida">⚡</span>' : ''}
