@@ -627,13 +627,42 @@ function renderConstructores() {
 // ── EVOLUCIÓN ──────────────────────────────────────────────────────
 
 let selectedDrivers = null  // persiste entre cambios de tab
+let selectedTeams   = null
+let evolMode        = 'drivers'
 
 function renderEvolucion() {
   const racePoints     = appData.stats?.racePoints     || []
   const completedRaces = appData.stats?.completedRaces || []
-  const racesLabel     = completedRaces.map(r => r.name).join(' · ')
 
-  // Todos los pilotos ordenados por total de puntos
+  if (!selectedDrivers) selectedDrivers = new Set()
+  if (!selectedTeams)   selectedTeams   = new Set()
+
+  const isConstructors = evolMode === 'constructors'
+
+  // Build constructor points: sum both drivers per race key, grouped by team
+  const driverTeamLookup = {}
+  ;(appData.drivers || []).forEach(d => { driverTeamLookup[d.name] = d.team })
+
+  const teamPointsMap = {}
+  racePoints.forEach(row => {
+    const team = driverTeamLookup[row.driver_name] || ''
+    if (!team) return
+    if (!teamPointsMap[team]) teamPointsMap[team] = { driver_name: team }
+    completedRaces.forEach(r => {
+      teamPointsMap[team][r.key]        = (teamPointsMap[team][r.key]        || 0) + (row[r.key]        || 0)
+      teamPointsMap[team][r.key + '_r'] = (teamPointsMap[team][r.key + '_r'] || 0) + (row[r.key + '_r'] || 0)
+      teamPointsMap[team][r.key + '_s'] = (teamPointsMap[team][r.key + '_s'] || 0) + (row[r.key + '_s'] || 0)
+    })
+  })
+  const constructorPoints = Object.values(teamPointsMap)
+  const topTeams = constructorPoints
+    .map(row => ({
+      name:  row.driver_name,
+      total: completedRaces.reduce((s, r) => s + (row[r.key] || 0), 0),
+    }))
+    .sort((a, b) => b.total - a.total)
+
+  // Drivers sorted by total
   const topDrivers = [...racePoints]
     .map(row => {
       const total = completedRaces.reduce((s, r) => s + (row[r.key] || 0), 0)
@@ -642,20 +671,20 @@ function renderEvolucion() {
     })
     .sort((a, b) => b.total - a.total)
 
-  // Selección inicial vacía — el usuario elige qué comparar
-  if (!selectedDrivers) selectedDrivers = new Set()
-
   set(`
     <div class="section-title">EVOLUCIÓN DE PUNTAJE</div>
     <div class="chart-controls">
-      <div></div>
+      <div class="toggle-btns" id="evol-mode-toggle">
+        <button class="toggle-btn ${!isConstructors ? 'active' : ''}" data-evol="drivers">Pilotos</button>
+        <button class="toggle-btn ${isConstructors ? 'active' : ''}" data-evol="constructors">Constructores</button>
+      </div>
       <div class="toggle-btns" id="chart-toggle">
         <button class="toggle-btn ${chartMode === 'cumulative' ? 'active' : ''}" data-mode="cumulative">Acumulado</button>
         <button class="toggle-btn ${chartMode === 'per-race' ? 'active' : ''}" data-mode="per-race">Por carrera</button>
       </div>
     </div>
     <div class="driver-selector-header">
-      <span class="driver-selector-label">Pilotos</span>
+      <span class="driver-selector-label">${isConstructors ? 'Constructores' : 'Pilotos'}</span>
       <div class="driver-selector-actions">
         <button class="ds-action" id="ds-all">Todos</button>
         <button class="ds-action" id="ds-none">Limpiar</button>
@@ -665,62 +694,97 @@ function renderEvolucion() {
     <div class="chart-container" id="chart-wrap"></div>
   `)
 
-  // Renderiza pills
+  // Render pills
   const selectorEl = document.getElementById('driver-selector')
-  topDrivers.forEach(d => {
-    const color = tc(d.team)
-    const pill  = document.createElement('button')
-    pill.className = 'driver-pill' + (selectedDrivers.has(d.name) ? ' active' : '')
-    pill.dataset.driver = d.name
-    pill.style.setProperty('--tc', color)
-    pill.innerHTML = `<span class="pill-dot"></span>${pillName(d.name)}`
-    selectorEl.appendChild(pill)
-  })
+  if (isConstructors) {
+    topTeams.forEach(d => {
+      const pill = document.createElement('button')
+      pill.className = 'driver-pill' + (selectedTeams.has(d.name) ? ' active' : '')
+      pill.dataset.driver = d.name
+      pill.style.setProperty('--tc', tc(d.name))
+      pill.innerHTML = `<span class="pill-dot"></span>${d.name}`
+      selectorEl.appendChild(pill)
+    })
+  } else {
+    topDrivers.forEach(d => {
+      const pill = document.createElement('button')
+      pill.className = 'driver-pill' + (selectedDrivers.has(d.name) ? ' active' : '')
+      pill.dataset.driver = d.name
+      pill.style.setProperty('--tc', tc(d.team))
+      pill.innerHTML = `<span class="pill-dot"></span>${pillName(d.name)}`
+      selectorEl.appendChild(pill)
+    })
+  }
 
   const redraw = () => {
     const wrap = document.getElementById('chart-wrap')
-    const filtered = racePoints.filter(r => selectedDrivers.has(r.driver_name))
-    if (!filtered.length) {
-      wrap.innerHTML = '<p style="color:var(--muted);padding:48px;text-align:center;font-size:13px">Seleccioná pilotos arriba para ver la evolución</p>'
-      return
+    if (isConstructors) {
+      const filtered = constructorPoints.filter(r => selectedTeams.has(r.driver_name))
+      if (!filtered.length) {
+        wrap.innerHTML = '<p style="color:var(--muted);padding:48px;text-align:center;font-size:13px">Seleccioná constructores arriba para ver la evolución</p>'
+        return
+      }
+      // Map team → team so driverTeamMap[teamName] = teamName → teamColor works
+      const teamsAsDrivers = topTeams.map(t => ({ name: t.name, team: t.name }))
+      buildChart(wrap, filtered, teamsAsDrivers, chartMode, completedRaces)
+    } else {
+      const filtered = racePoints.filter(r => selectedDrivers.has(r.driver_name))
+      if (!filtered.length) {
+        wrap.innerHTML = '<p style="color:var(--muted);padding:48px;text-align:center;font-size:13px">Seleccioná pilotos arriba para ver la evolución</p>'
+        return
+      }
+      buildChart(wrap, filtered, appData.drivers, chartMode, completedRaces)
     }
-    buildChart(wrap, filtered, appData.drivers, chartMode, completedRaces)
   }
 
   redraw()
 
+  // Pilotos / Constructores toggle
+  document.getElementById('evol-mode-toggle').addEventListener('click', e => {
+    const btn = e.target.closest('.toggle-btn')
+    if (!btn || !btn.dataset.evol) return
+    evolMode = btn.dataset.evol
+    renderEvolucion()
+  })
+
   // Acumulado / Por carrera
   document.getElementById('chart-toggle').addEventListener('click', e => {
     const btn = e.target.closest('.toggle-btn')
-    if (!btn) return
+    if (!btn || !btn.dataset.mode) return
     chartMode = btn.dataset.mode
-    document.querySelectorAll('.toggle-btn').forEach(b => b.classList.toggle('active', b.dataset.mode === chartMode))
+    document.querySelectorAll('#chart-toggle .toggle-btn').forEach(b => b.classList.toggle('active', b.dataset.mode === chartMode))
     redraw()
   })
 
-  // Toggle individual piloto
+  // Toggle individual piloto/constructor
   selectorEl.addEventListener('click', e => {
     const pill = e.target.closest('.driver-pill')
     if (!pill) return
     const name = pill.dataset.driver
-    if (selectedDrivers.has(name)) {
-      selectedDrivers.delete(name); pill.classList.remove('active')
+    const sel  = isConstructors ? selectedTeams : selectedDrivers
+    if (sel.has(name)) {
+      sel.delete(name); pill.classList.remove('active')
     } else {
-      selectedDrivers.add(name); pill.classList.add('active')
+      sel.add(name); pill.classList.add('active')
     }
     redraw()
   })
 
   // Todos
   document.getElementById('ds-all').addEventListener('click', () => {
-    topDrivers.forEach(d => selectedDrivers.add(d.name))
+    if (isConstructors) {
+      topTeams.forEach(d => selectedTeams.add(d.name))
+    } else {
+      topDrivers.forEach(d => selectedDrivers.add(d.name))
+    }
     document.querySelectorAll('.driver-pill').forEach(p => p.classList.add('active'))
     redraw()
   })
 
-  // Limpiar — vacía toda la selección
+  // Limpiar
   document.getElementById('ds-none').addEventListener('click', () => {
-    selectedDrivers.clear()
+    if (isConstructors) selectedTeams.clear()
+    else selectedDrivers.clear()
     document.querySelectorAll('.driver-pill').forEach(p => p.classList.remove('active'))
     redraw()
   })
