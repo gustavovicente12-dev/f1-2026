@@ -433,6 +433,7 @@ function renderClasificaciones(activeRound, activeType) {
           <div class="qual-pos ${pClass}">${s.sq_pos}</div>
           <div class="qual-driver" style="border-left:3px solid ${color}">
             ${flagImg(driverFlagMap[s.driver_name] || '', 16)}
+            ${tl(s.team, 18)}
             <span class="qual-code">${s.driver_code}</span>
             <span class="qual-name">${s.driver_name}</span>
           </div>
@@ -463,6 +464,7 @@ function renderClasificaciones(activeRound, activeType) {
           <div class="qual-pos ${pClass}">${q.pos}</div>
           <div class="qual-driver" style="border-left:3px solid ${color}">
             ${flagImg(driverFlagMap[q.driver_name] || '', 16)}
+            ${tl(q.team, 18)}
             <span class="qual-code">${q.driver_code}</span>
             <span class="qual-name">${q.driver_name}</span>
           </div>
