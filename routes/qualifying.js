@@ -8,13 +8,21 @@ router.get('/', async (req, res) => {
     const done = schedule.filter(r => r.status === 'done' || r.status === 'next')
 
     const sessions = await Promise.all(done.map(async r => {
-      const [qualJson, sprintJson] = await Promise.all([
-        apiFetch(`/current/${r.round}/qualifying.json`),
-        r.has_sprint ? apiFetch(`/current/${r.round}/sprint.json`) : Promise.resolve(null),
-      ])
+      let qualJson, sprintJson
+      try {
+        ;[qualJson, sprintJson] = await Promise.all([
+          apiFetch(`/current/${r.round}/qualifying.json`),
+          r.has_sprint ? apiFetch(`/current/${r.round}/sprint.json`) : Promise.resolve(null),
+        ])
+      } catch {
+        return null
+      }
 
       const race = qualJson?.MRData?.RaceTable?.Races?.[0]
-      if (!race) return null
+      if (!race) {
+        // Solo incluir como "pendiente" la carrera con status next; ignorar errores de rondas pasadas
+        return r.status === 'next' ? { round: r.round, name: r.name, flag: r.flag, date_str: r.date_str, has_sprint: r.has_sprint, results: [], sprint_grid: null, pending: true } : null
+      }
 
       const results = (race.QualifyingResults || []).map(q => ({
         pos:         +q.position,

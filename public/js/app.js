@@ -469,6 +469,15 @@ function renderClasificaciones(activeRound, activeType) {
         ${sprintRows}
       </div>
     `
+  } else if (selected.pending) {
+    tableContent = `
+      <div class="qual-pending">
+        <div class="qual-pending-icon">⏱</div>
+        <div class="qual-pending-title">Esperando resultados de clasificación</div>
+        <div class="qual-pending-sub">La página se actualiza automáticamente cada minuto durante la sesión y cada 10 minutos fuera de ella.</div>
+        <div class="qual-pending-dot"><span class="dot-live"></span> Actualizando…</div>
+      </div>
+    `
   } else {
     const gpRows = selected.results.map(q => {
       const color  = tc(q.team)

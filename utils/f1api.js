@@ -1,17 +1,30 @@
 /* ── Jolpica / Ergast API wrapper con cache ──────────────────────── */
 
-const BASE = 'https://api.jolpi.ca/ergast/f1'
-const CACHE = new Map()
-const TTL   = 5 * 60 * 1000   // 5 minutos
+const BASE    = 'https://api.jolpi.ca/ergast/f1'
+const CACHE   = new Map()
+const TTL     = 5 * 60 * 1000   // 5 minutos
+const TIMEOUT = 10 * 1000       // 10 segundos por request
 
 async function apiFetch(path) {
   const now = Date.now()
   const hit = CACHE.get(path)
   if (hit && now - hit.ts < TTL) return hit.data
-  const res  = await fetch(`${BASE}${path}`)
-  const data = await res.json()
-  CACHE.set(path, { data, ts: now })
-  return data
+
+  const ctrl = new AbortController()
+  const timer = setTimeout(() => ctrl.abort(), TIMEOUT)
+  try {
+    const res  = await fetch(`${BASE}${path}`, { signal: ctrl.signal })
+    if (!res.ok) throw new Error(`HTTP ${res.status}`)
+    const data = await res.json()
+    CACHE.set(path, { data, ts: now })
+    return data
+  } catch (err) {
+    // Stale-while-error: si hay datos cacheados (aunque vencidos), usarlos
+    if (hit) return hit.data
+    throw err
+  } finally {
+    clearTimeout(timer)
+  }
 }
 
 // ── Lookup tables ─────────────────────────────────────────────────
