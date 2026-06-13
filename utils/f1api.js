@@ -268,39 +268,47 @@ async function fetchSchedule() {
 // ── Race results (single round) ───────────────────────────────────
 
 async function fetchRaceResults(round, raceName) {
-  const json = await apiFetch(`/current/${round}/results.json`)
-  const race = json.MRData.RaceTable.Races[0]
-  if (!race) return []
-  return (race.Results || []).map(r => ({
-    race_name:   raceName || raceShort(race.raceName),
-    race_type:   'race',
-    pos:         +r.position,
-    driver_name: `${r.Driver.givenName} ${r.Driver.familyName}`,
-    driver_code: r.Driver.code,
-    team:        normTeam(r.Constructor.name),
-    pts:         +r.points,
-    fastest_lap: r.FastestLap?.rank === '1',
-    dnf:         r.status !== 'Finished' && r.status !== 'Lapped' && !r.status.startsWith('+'),
-  }))
+  try {
+    const json = await apiFetch(`/current/${round}/results.json`)
+    const race = json.MRData.RaceTable.Races[0]
+    if (!race) return []
+    return (race.Results || []).map(r => ({
+      race_name:   raceName || raceShort(race.raceName),
+      race_type:   'race',
+      pos:         +r.position,
+      driver_name: `${r.Driver.givenName} ${r.Driver.familyName}`,
+      driver_code: r.Driver.code,
+      team:        normTeam(r.Constructor.name),
+      pts:         +r.points,
+      fastest_lap: r.FastestLap?.rank === '1',
+      dnf:         r.status !== 'Finished' && r.status !== 'Lapped' && !r.status.startsWith('+'),
+    }))
+  } catch {
+    return []
+  }
 }
 
 // ── Sprint results (single round) ────────────────────────────────
 
 async function fetchSprintResults(round, raceName) {
-  const json = await apiFetch(`/current/${round}/sprint.json`)
-  const race = json.MRData.RaceTable.Races[0]
-  if (!race) return []
-  return (race.SprintResults || []).map(r => ({
-    race_name:   raceName || raceShort(race.raceName),
-    race_type:   'sprint',
-    pos:         +r.position,
-    driver_name: `${r.Driver.givenName} ${r.Driver.familyName}`,
-    driver_code: r.Driver.code,
-    team:        normTeam(r.Constructor.name),
-    pts:         +r.points,
-    fastest_lap: false,
-    dnf:         r.status !== 'Finished' && !r.status.startsWith('+'),
-  }))
+  try {
+    const json = await apiFetch(`/current/${round}/sprint.json`)
+    const race = json.MRData.RaceTable.Races[0]
+    if (!race) return []
+    return (race.SprintResults || []).map(r => ({
+      race_name:   raceName || raceShort(race.raceName),
+      race_type:   'sprint',
+      pos:         +r.position,
+      driver_name: `${r.Driver.givenName} ${r.Driver.familyName}`,
+      driver_code: r.Driver.code,
+      team:        normTeam(r.Constructor.name),
+      pts:         +r.points,
+      fastest_lap: false,
+      dnf:         r.status !== 'Finished' && !r.status.startsWith('+'),
+    }))
+  } catch {
+    return []
+  }
 }
 
 // ── All completed results (race + sprint) ─────────────────────────
@@ -309,6 +317,7 @@ async function fetchAllResults(schedule) {
   const done    = (schedule || []).filter(r => r.status === 'done')
   const sprints = done.filter(r => r.has_sprint)
 
+  // fetchRaceResults/fetchSprintResults ya capturan errores individuales, no pueden tirar
   const allArrays = await Promise.all([
     ...done.map(r => fetchRaceResults(r.round, r.name)),
     ...sprints.map(r => fetchSprintResults(r.round, r.name)),

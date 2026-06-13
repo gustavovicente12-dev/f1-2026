@@ -315,62 +315,92 @@ function renderResumen() {
 // ── RESULTADOS ─────────────────────────────────────────────────────
 
 function renderResultados(activeRace, activeType) {
-  const doneRaces = (appData.calendar || []).filter(r => r.status === 'done')
-  if (!doneRaces.length) { set('<p style="color:var(--muted);padding:40px">Sin carreras disputadas.</p>'); return }
+  const cal       = appData.calendar || []
+  const doneRaces = cal.filter(r => r.status === 'done')
+  const nextRace  = cal.find(r => r.status === 'next') || null
+  const sidebarRaces = nextRace ? [...doneRaces, nextRace] : doneRaces
 
-  const race     = doneRaces.find(r => r.name === activeRace) || doneRaces[doneRaces.length - 1]
-  const type     = activeType || 'race'
+  if (!sidebarRaces.length) { set('<p style="color:var(--muted);padding:40px">Sin carreras disputadas.</p>'); return }
+
+  // Por defecto: seleccionar la más reciente de la sidebar (última done, o next si se pidió explícitamente)
+  const race = sidebarRaces.find(r => r.name === activeRace) || doneRaces[doneRaces.length - 1] || sidebarRaces[sidebarRaces.length - 1]
+  const isPending = race.status === 'next'
+  const type      = activeType || 'race'
   const hasSprint = race.has_sprint
 
   const driverFlagMap = {}
   ;(appData.drivers || []).forEach(d => { driverFlagMap[d.name] = d.flag })
 
-  const sidebarItems = doneRaces.map(r => `
-    <div class="qual-race-item ${r.name === race.name ? 'active' : ''}" data-res-race="${r.name}">
+  const sidebarItems = sidebarRaces.map(r => `
+    <div class="qual-race-item ${r.name === race.name ? 'active' : ''} ${r.status === 'next' ? 'res-next' : ''}" data-res-race="${r.name}">
       <span class="qual-race-round">R${r.round}</span>
       <span class="qual-race-flag">${flagImg(r.flag, 16)}</span>
       <span class="qual-race-name">${r.name}</span>
-      ${r.has_sprint ? '<span class="sprint-badge">S</span>' : ''}
+      ${r.status === 'next' ? '<span class="sprint-badge" style="background:var(--cyan);color:#000">LIVE</span>' : r.has_sprint ? '<span class="sprint-badge">S</span>' : ''}
     </div>
   `).join('')
 
-  const typeTabs = hasSprint ? `
+  const typeTabs = (!isPending && hasSprint) ? `
     <div class="res-type-tabs">
       <button class="res-type-tab ${type === 'race' ? 'active' : ''}" data-type="race">Carrera</button>
       <button class="res-type-tab ${type === 'sprint' ? 'active' : ''}" data-type="sprint">Sprint</button>
     </div>
   ` : ''
 
-  const raceResults = (appData.results || [])
-    .filter(r => r.race_name === race.name && r.race_type === type)
-    .sort((a, b) => a.pos - b.pos)
+  let tableContent
+  if (isPending) {
+    tableContent = `
+      <div class="qual-pending">
+        <div class="qual-pending-icon">🏁</div>
+        <div class="qual-pending-title">Carrera no disputada aún</div>
+        <div class="qual-pending-sub">Los resultados aparecerán automáticamente en cuanto finalice la carrera y Jolpica publique los datos.</div>
+        <div class="qual-pending-dot"><span class="dot-live"></span> Actualizando…</div>
+      </div>
+    `
+  } else {
+    const raceResults = (appData.results || [])
+      .filter(r => r.race_name === race.name && r.race_type === type)
+      .sort((a, b) => a.pos - b.pos)
 
-  const penalties = (RACE_PENALTIES[race.name] || {})[type] || {}
+    const penalties = (RACE_PENALTIES[race.name] || {})[type] || {}
 
-  const rows = raceResults.length
-    ? raceResults.map(r => {
-        const color   = tc(r.team)
-        const pClass  = posClass(r.pos)
-        const penalty = penalties[r.driver_name]
-        const ptsHtml = r.dnf
-          ? '<span class="dnf-badge">DNF</span>'
-          : `${r.pts} pts${penalty ? ` <span class="penalty-badge">${penalty}</span>` : ''}`
-        return `
-          <div class="qual-row ${pClass} ${r.dnf ? 'result-dnf' : ''}" data-driver="${r.driver_name}" style="cursor:pointer">
-            <div class="qual-pos ${pClass}">${r.pos}</div>
-            <div class="qual-driver" style="border-left:3px solid ${color}">
-              ${flagImg(driverFlagMap[r.driver_name] || '', 16)}
-              ${tl(r.team, 18)}
-              <span class="qual-code">${r.driver_code || ''}</span>
-              <span class="qual-name">${r.driver_name}</span>
-              ${r.fastest_lap ? '<span class="fastest-icon" title="Vuelta rápida">⚡</span>' : ''}
+    const rows = raceResults.length
+      ? raceResults.map(r => {
+          const color   = tc(r.team)
+          const pClass  = posClass(r.pos)
+          const penalty = penalties[r.driver_name]
+          const ptsHtml = r.dnf
+            ? '<span class="dnf-badge">DNF</span>'
+            : `${r.pts} pts${penalty ? ` <span class="penalty-badge">${penalty}</span>` : ''}`
+          return `
+            <div class="qual-row ${pClass} ${r.dnf ? 'result-dnf' : ''}" data-driver="${r.driver_name}" style="cursor:pointer">
+              <div class="qual-pos ${pClass}">${r.pos}</div>
+              <div class="qual-driver" style="border-left:3px solid ${color}">
+                ${flagImg(driverFlagMap[r.driver_name] || '', 16)}
+                ${tl(r.team, 18)}
+                <span class="qual-code">${r.driver_code || ''}</span>
+                <span class="qual-name">${r.driver_name}</span>
+                ${r.fastest_lap ? '<span class="fastest-icon" title="Vuelta rápida">⚡</span>' : ''}
+              </div>
+              <div class="qual-team res-team" data-team="${r.team}" style="color:${color};cursor:pointer">${tl(r.team,18)} ${r.team}</div>
+              <div class="res-pts">${ptsHtml}</div>
             </div>
-            <div class="qual-team res-team" data-team="${r.team}" style="color:${color};cursor:pointer">${tl(r.team,18)} ${r.team}</div>
-            <div class="res-pts">${ptsHtml}</div>
-          </div>
-        `
-      }).join('')
-    : `<div class="qual-row"><div style="grid-column:1/-1;color:var(--muted);padding:16px">Sin resultados registrados.</div></div>`
+          `
+        }).join('')
+      : `<div class="qual-row"><div style="grid-column:1/-1;color:var(--muted);padding:16px">Sin resultados registrados.</div></div>`
+
+    tableContent = `
+      <div class="qual-table res-table">
+        <div class="qual-header">
+          <div class="qual-pos">P</div>
+          <div class="qual-driver">Piloto</div>
+          <div class="qual-team res-team">Escudería</div>
+          <div class="res-pts">Puntos</div>
+        </div>
+        ${rows}
+      </div>
+    `
+  }
 
   set(`
     <div class="section-title">RESULTADOS</div>
@@ -384,15 +414,7 @@ function renderResultados(activeRace, activeType) {
           <span class="qual-race-date">${fmtDate(race.date_str)}</span>
         </div>
         ${typeTabs}
-        <div class="qual-table res-table">
-          <div class="qual-header">
-            <div class="qual-pos">P</div>
-            <div class="qual-driver">Piloto</div>
-            <div class="qual-team res-team">Escudería</div>
-            <div class="res-pts">Puntos</div>
-          </div>
-          ${rows}
-        </div>
+        ${tableContent}
       </div>
     </div>
   `)
