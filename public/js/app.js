@@ -908,7 +908,10 @@ function renderDeclaraciones() {
   const flagMap = {}
   ;(appData.drivers || []).forEach(d => { flagMap[d.name] = d.flag })
 
-  // Build race list for filter
+  const calFlagMap = {}
+  ;(appData.calendar || []).forEach(r => { calFlagMap[r.name] = r.flag })
+
+  // Build race list (newest first)
   const races = []
   const seen  = new Set()
   decls.forEach(d => {
@@ -919,18 +922,18 @@ function renderDeclaraciones() {
   })
   races.sort((a, b) => b.round - a.round)
 
-  const filtered = declFilter === 'all' ? decls : decls.filter(d => d.round === declFilter)
-
   const filterBtns = [{ round: 'all', race: 'Todas' }, ...races].map(r => `
     <button class="decl-filter-btn ${declFilter === r.round ? 'active' : ''}" data-round="${r.round}">
       ${r.round === 'all' ? r.race : `R${r.round} · ${r.race}`}
     </button>
   `).join('')
 
-  const cards = filtered.length ? filtered.map(d => {
-    const color   = tc(d.team)
-    const photo   = DRIVER_PHOTOS[d.code] || ''
+  function buildCard(d) {
+    const color    = tc(d.team)
+    const photo    = DRIVER_PHOTOS[d.code] || ''
     const flagCode = flagMap[d.driver] || ''
+    const ctxBadge = d.context && d.context !== 'Carrera'
+      ? `<span class="decl-ctx-badge">${d.context}</span>` : ''
     return `
       <div class="decl-card" style="--tc:${color}">
         <div class="decl-driver-bar">
@@ -943,19 +946,44 @@ function renderDeclaraciones() {
             </div>
             <div class="decl-team" style="color:${color}">${d.team}</div>
           </div>
-          <div class="decl-race-badge">R${d.round} · ${d.race}</div>
+          ${ctxBadge}
         </div>
         <div class="decl-quote">"${d.quote}"</div>
         <div class="decl-date">${fmtDate(d.date)}</div>
       </div>
     `
-  }).join('') : '<p style="color:var(--muted);padding:48px;text-align:center;font-size:13px">Sin declaraciones para este GP.</p>'
+  }
+
+  let content
+  if (declFilter === 'all') {
+    // Agrupar por carrera con encabezados visuales
+    content = races.map(r => {
+      const group = decls.filter(d => d.round === r.round)
+      const flag  = calFlagMap[r.race] || ''
+      return `
+        <div class="decl-race-section">
+          <div class="decl-race-header-full">
+            ${flagImg(flag, 20)}
+            <span class="decl-race-header-round">R${r.round}</span>
+            <span class="decl-race-header-name">${r.race}</span>
+            <span class="decl-race-header-count">${group.length} declaración${group.length !== 1 ? 'es' : ''}</span>
+          </div>
+          <div class="decl-grid">${group.map(buildCard).join('')}</div>
+        </div>
+      `
+    }).join('')
+  } else {
+    const group = decls.filter(d => d.round === declFilter)
+    content = group.length
+      ? `<div class="decl-grid">${group.map(buildCard).join('')}</div>`
+      : '<p style="color:var(--muted);padding:48px;text-align:center;font-size:13px">Sin declaraciones para este GP.</p>'
+  }
 
   set(`
     <div class="section-title">DECLARACIONES</div>
-    <div class="section-sub">Palabras de los pilotos tras cada carrera — Temporada 2026</div>
+    <div class="section-sub">Palabras de los pilotos — Temporada 2026</div>
     <div class="decl-filters">${filterBtns}</div>
-    <div class="decl-grid">${cards}</div>
+    ${content}
   `)
 
   document.querySelector('.decl-filters').addEventListener('click', e => {
