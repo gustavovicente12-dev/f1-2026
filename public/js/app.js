@@ -1292,9 +1292,12 @@ function renderHistoria() {
           <div class="hist-row">
             <div class="hist-year">${c.year}</div>
             <div class="hist-driver">
-              ${flagImg}
-              <span class="hist-name">${c.name}</span>
-              <span class="hist-code">${c.code}</span>
+              <div class="hist-driver-row">
+                ${flagImg}
+                <span class="hist-name">${c.name}</span>
+                <span class="hist-code">${c.code}</span>
+              </div>
+              <span class="hist-team-sub">${c.team}</span>
             </div>
             <div class="hist-team">${c.team}</div>
             <div class="hist-pts">${c.pts} <span class="hist-pts-label">pts</span></div>
