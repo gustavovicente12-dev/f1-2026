@@ -376,8 +376,8 @@ function renderResultados(activeRace, activeType) {
             <div class="qual-row ${pClass} ${r.dnf ? 'result-dnf' : ''}" data-driver="${r.driver_name}" style="cursor:pointer">
               <div class="qual-pos ${pClass}">${r.pos}</div>
               <div class="qual-driver" style="border-left:3px solid ${color}">
-                ${flagImg(driverFlagMap[r.driver_name] || '', 16)}
-                ${tl(r.team, 18)}
+                ${tl(r.team, 24)}
+                ${flagImg(driverFlagMap[r.driver_name] || '', 12)}
                 <span class="qual-code">${r.driver_code || ''}</span>
                 <span class="qual-name">${r.driver_name}</span>
                 ${r.fastest_lap ? '<span class="fastest-icon" title="Vuelta rápida">⚡</span>' : ''}
@@ -470,8 +470,8 @@ function renderClasificaciones(activeRound, activeType) {
         <div class="qual-row ${pClass}" data-driver="${s.driver_name}" style="cursor:pointer">
           <div class="qual-pos ${pClass}">${s.sq_pos}</div>
           <div class="qual-driver" style="border-left:3px solid ${color}">
-            ${flagImg(driverFlagMap[s.driver_name] || '', 16)}
-            ${tl(s.team, 18)}
+            ${tl(s.team, 24)}
+            ${flagImg(driverFlagMap[s.driver_name] || '', 12)}
             <span class="qual-code">${s.driver_code}</span>
             <span class="qual-name">${s.driver_name}</span>
           </div>
@@ -508,8 +508,8 @@ function renderClasificaciones(activeRound, activeType) {
         <div class="qual-row ${pClass}" data-driver="${q.driver_name}" style="cursor:pointer">
           <div class="qual-pos ${pClass}">${q.pos}</div>
           <div class="qual-driver" style="border-left:3px solid ${color}">
-            ${flagImg(driverFlagMap[q.driver_name] || '', 16)}
-            ${tl(q.team, 18)}
+            ${tl(q.team, 24)}
+            ${flagImg(driverFlagMap[q.driver_name] || '', 12)}
             <span class="qual-code">${q.driver_code}</span>
             <span class="qual-name">${q.driver_name}</span>
           </div>
