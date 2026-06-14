@@ -50,7 +50,9 @@
       "WebFetch(domain:www.mclaren.com)",
       "WebFetch(domain:www.formulaonehistory.com)",
       "WebFetch(domain:www.autohebdof1.com)",
-      "WebFetch(domain:www.youtube.com)"
+      "WebFetch(domain:www.youtube.com)",
+      "WebFetch(domain:vidiq.com)",
+      "WebFetch(domain:www.noxinfluencer.com)"
     ]
   },
   "hooks": {
