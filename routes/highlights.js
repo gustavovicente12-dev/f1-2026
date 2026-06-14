@@ -8,8 +8,8 @@ const RSS_TTL = 30 * 60 * 1000
 // Datos históricos (fallback para carreras que ya salieron del RSS)
 const SEED = [
   { race: 'Gran Premio de Australia', flag: 'au', round: 1, videos: [
-    { type: 'Clasificación', id: 'Bx2uJVt9KG8' },
-    { type: 'Carrera',       id: 'ovJKA-FMJUg' },
+    { type: 'Clasificación', id: 'QztBs3IZBHk' },
+    { type: 'Carrera',       id: 'lL_d84cN1UY' },
   ]},
   { race: 'Gran Premio de China', flag: 'cn', round: 2, videos: [
     { type: 'Sprint Quali',  id: '-LnHUI4DxRs' },
@@ -18,8 +18,8 @@ const SEED = [
     { type: 'Carrera',       id: 't8HpVlineX4' },
   ]},
   { race: 'Gran Premio de Japón', flag: 'jp', round: 3, videos: [
-    { type: 'Clasificación', id: 'EW92sQPZuWk' },
-    { type: 'Carrera',       id: 'oAtYfF0_4-I' },
+    { type: 'Clasificación', id: 'oZH_7pYJPTE' },
+    { type: 'Carrera',       id: 'JfTnvMkBoKo' },
   ]},
   { race: 'Gran Premio de Miami', flag: 'us', round: 4, videos: [
     { type: 'Sprint Quali',  id: 'zV_UPEsZl-s' },
