@@ -237,7 +237,7 @@ async function fetchSchedule() {
   let foundNext = false
 
   return races.map(r => {
-    const isPast = r.date <= today || !!winnerByRound[r.round]
+    const isPast = r.date < today || !!winnerByRound[r.round]
     const isNext = !isPast && !foundNext
     if (isNext) foundNext = true
     const status = isPast ? 'done' : isNext ? 'next' : 'upcoming'
