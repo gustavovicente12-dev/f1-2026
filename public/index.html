@@ -58,6 +58,20 @@
     </div>
   </div>
 
+  <!-- Post-Racing video modal -->
+  <div id="pr-modal" class="prmodal-backdrop" style="display:none" onclick="closePRModal(event)">
+    <div class="prmodal-card">
+      <div class="prmodal-header">
+        <span id="prmodal-title" class="prmodal-title"></span>
+        <button class="prmodal-close" onclick="closePRModal()">✕</button>
+      </div>
+      <div class="prmodal-body">
+        <iframe id="prmodal-iframe" class="prmodal-iframe" src="" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+      </div>
+      <div class="prmodal-hint">💡 Para subtítulos en español: activá CC en el player → ⚙️ → Subtítulos → Traducción automática → Español</div>
+    </div>
+  </div>
+
   <nav class="tab-nav">
     <div class="container">
       <div class="tabs" id="tabs">

@@ -1443,7 +1443,7 @@ function renderPostRacing() {
   }
 
   const cards = data.map(gp => `
-    <div class="pr-card" onclick="openHighlight('${gp.id}')">
+    <div class="pr-card" onclick="openPRModal('${gp.id}', '${gp.race}')">
       <div class="pr-thumb-wrap">
         <img class="pr-thumb" src="https://img.youtube.com/vi/${gp.id}/mqdefault.jpg" alt="${gp.race}" loading="lazy">
         <div class="pr-play-btn">&#9654;&#65038;</div>
@@ -1464,6 +1464,22 @@ function renderPostRacing() {
     <p class="section-sub">Los pilotos del podio ven los momentos más destacados de la carrera.</p>
     <div class="pr-grid">${cards}</div>
   `)
+}
+
+function openPRModal(id, race) {
+  document.getElementById('prmodal-title').textContent = race
+  document.getElementById('prmodal-iframe').src =
+    `https://www.youtube.com/embed/${id}?autoplay=1&cc_load_policy=1&cc_lang_pref=es&hl=es`
+  const modal = document.getElementById('pr-modal')
+  modal.style.display = 'flex'
+  document.body.style.overflow = 'hidden'
+}
+
+function closePRModal(e) {
+  if (e && e.target !== document.getElementById('pr-modal')) return
+  document.getElementById('prmodal-iframe').src = ''
+  document.getElementById('pr-modal').style.display = 'none'
+  document.body.style.overflow = ''
 }
 
 // ── Init ───────────────────────────────────────────────────────────
