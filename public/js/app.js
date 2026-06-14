@@ -1455,6 +1455,7 @@ function renderPostRacing() {
           <span class="pr-name">${gp.race}</span>
         </div>
         <div class="pr-label">Drivers React After The Race</div>
+        <div class="pr-hint">Podés activar la auto-traducción al español desde la configuración de arriba a la derecha ( ⚙️ → Subtítulos → Traducción automática → Español).</div>
       </div>
     </div>
   `).join('')
