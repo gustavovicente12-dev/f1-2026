@@ -3,7 +3,7 @@ const { fetchSchedule } = require('../utils/f1api')
 
 const F1_CHANNEL = 'UCB_qr75-ydFVKSF9Dmo6izg'
 let _rssCache = null, _rssCacheTs = 0
-const RSS_TTL = 30 * 60 * 1000
+const RSS_TTL = 5 * 60 * 1000
 
 // Datos históricos (fallback para carreras que ya salieron del RSS)
 const SEED = [
