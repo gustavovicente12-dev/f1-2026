@@ -35,6 +35,10 @@ const SEED = [
   ]},
   { race: 'Gran Premio de Mónaco', flag: 'mc', round: 6, videos: [
     { type: 'Clasificación', id: 'xmk0j-HdgwY' },
+    { type: 'Carrera',       id: 'ipOT9ruRobc' },
+  ]},
+  { race: 'Gran Premio de España', flag: 'es', round: 7, videos: [
+    { type: 'Clasificación', id: 'Q2fMM4H9bWY' },
   ]},
 ]
 
