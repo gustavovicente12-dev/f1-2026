@@ -82,7 +82,8 @@ a { color: inherit; text-decoration: none; }
   background: none;
   border: 1px solid #2a2a38;
   color: var(--muted);
-  font-size: 13px;
+  font-size: 16px;
+  position: relative;
   width: 30px;
   height: 30px;
   border-radius: 50%;
@@ -94,6 +95,17 @@ a { color: inherit; text-decoration: none; }
   flex-shrink: 0;
 }
 .audio-btn:hover { color: var(--red); border-color: var(--red); }
+.audio-btn.is-muted::before {
+  content: '';
+  position: absolute;
+  width: 130%;
+  height: 1.5px;
+  background: currentColor;
+  top: 50%;
+  left: -15%;
+  transform: rotate(-45deg);
+  pointer-events: none;
+}
 .header-pill {
   display: flex;
   align-items: center;

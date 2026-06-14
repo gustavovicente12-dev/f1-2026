@@ -21,7 +21,7 @@
           </div>
         </div>
         <div id="header-info" class="header-info"></div>
-        <button id="audio-btn" class="audio-btn" title="Música F1" onclick="toggleAudio()">&#9654;&#65038;</button>
+        <button id="audio-btn" class="audio-btn is-muted" title="Activar música" onclick="toggleAudio()">♪</button>
       </div>
     </div>
   </header>
@@ -86,8 +86,15 @@
     function toggleAudio() {
       const audio = document.getElementById('f1-audio')
       const btn   = document.getElementById('audio-btn')
-      if (audio.paused) { audio.play(); btn.innerHTML = '&#9646;&#9646;&#65038;' }
-      else              { audio.pause(); btn.innerHTML = '&#9654;&#65038;' }
+      if (audio.paused) {
+        audio.play()
+        btn.classList.remove('is-muted')
+        btn.title = 'Silenciar música'
+      } else {
+        audio.pause()
+        btn.classList.add('is-muted')
+        btn.title = 'Activar música'
+      }
     }
   </script>
 </body>
