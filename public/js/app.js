@@ -219,7 +219,6 @@ function renderTab(tab) {
     case 'reglamento':   renderReglamento(); break
     case 'historia':     renderHistoria(); break
     case 'highlights':     renderHighlights(); break
-    case 'charlas':        renderCharlas(); break
     case 'declaraciones':  renderDeclaraciones(); break
   }
 }
@@ -1425,71 +1424,6 @@ function renderHighlights() {
 
 function openHighlight(videoId) {
   window.open(`https://www.youtube.com/watch?v=${videoId}`, '_blank')
-}
-
-// ── Charlas con Equipo ─────────────────────────────────────────────
-
-let _charlasActive = null  // round activo seleccionado
-let _charlasLoading = false
-
-async function loadCharlaMessages(videoId, round) {
-  const container = document.getElementById('charlas-messages')
-  if (!container) return
-  container.innerHTML = '<div class="charlas-loading"><div class="spinner"></div><p>Transcribiendo y traduciendo al español…</p></div>'
-  try {
-    const res = await fetch(`/api/teamradio/${videoId}`)
-    if (!res.ok) throw new Error('Sin transcript')
-    const messages = await res.json()
-    if (!messages.length) throw new Error('Vacío')
-    container.innerHTML = messages.map((m, i) => `
-      <div class="charla-msg">
-        <span class="charla-num">${i + 1}</span>
-        <div class="charla-text">
-          <p class="charla-es">${m.es}</p>
-          <p class="charla-en">${m.en}</p>
-        </div>
-      </div>
-    `).join('')
-  } catch (e) {
-    container.innerHTML = `<p class="charlas-error">Transcript no disponible todavía. Intentá más tarde.</p>`
-  }
-}
-
-function renderCharlas(activeRound) {
-  const radios = appData.teamradio || []
-  if (!radios.length) {
-    set('<p style="color:var(--muted);padding:40px">Sin datos de radio disponibles.</p>')
-    return
-  }
-
-  const selected = activeRound || _charlasActive || radios[radios.length - 1].round
-  _charlasActive = selected
-
-  const tabs = radios.map(r => `
-    <button class="charlas-tab ${r.round === selected ? 'active' : ''}"
-      onclick="renderCharlas(${r.round})">
-      ${flagImg(r.flag, 14)} R${r.round}
-    </button>
-  `).join('')
-
-  const current = radios.find(r => r.round === selected)
-
-  set(`
-    <div class="section-title">CHARLAS CON EQUIPO</div>
-    <p class="charlas-sub">Radio Rewind oficial de F1 · transcripto y traducido automáticamente</p>
-    <div class="charlas-tabs">${tabs}</div>
-    <div class="charlas-header">
-      ${flagImg(current.flag, 22)}
-      <span class="charlas-race">${current.race}</span>
-      <a class="charlas-yt-link" href="https://www.youtube.com/watch?v=${current.videoId}" target="_blank">▶ Ver en YouTube</a>
-    </div>
-    <div class="charlas-messages" id="charlas-messages">
-      <div class="charlas-loading"><div class="spinner"></div><p>Transcribiendo y traduciendo al español…</p></div>
-    </div>
-    <p class="charlas-disclaimer">⚠ Traducción automática — puede contener errores</p>
-  `)
-
-  loadCharlaMessages(current.videoId, selected)
 }
 
 // ── Init ───────────────────────────────────────────────────────────

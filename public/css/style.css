@@ -1663,25 +1663,6 @@ a { color: inherit; text-decoration: none; }
 .res-type-tab  { background:var(--surf2); border:1px solid var(--border); border-radius:6px; padding:6px 16px; font-size:12px; font-weight:600; color:var(--muted); cursor:pointer; transition:all .15s; }
 .res-type-tab.active, .res-type-tab:hover { background:var(--red); color:#fff; border-color:var(--red); }
 
-/* ─── Charlas con Equipo ──────────────────────────────────────────── */
-.charlas-sub        { color: var(--muted); font-size: 12px; margin: -4px 0 12px; }
-.charlas-tabs       { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 16px; }
-.charlas-tab        { background: var(--surface); border: 1px solid var(--border); border-radius: 20px; padding: 5px 12px; font-size: 12px; font-family: var(--font-mono); color: var(--muted); cursor: pointer; display: flex; align-items: center; gap: 6px; transition: all .2s; }
-.charlas-tab:hover  { border-color: var(--cyan); color: var(--text); }
-.charlas-tab.active { background: rgba(0,210,255,.15); border-color: var(--cyan); color: var(--cyan); }
-.charlas-header     { display: flex; align-items: center; gap: 10px; padding: 12px 0 14px; border-bottom: 1px solid var(--border); margin-bottom: 16px; }
-.charlas-race       { font-size: 15px; font-weight: 600; flex: 1; }
-.charlas-yt-link    { font-size: 11px; color: var(--muted); text-decoration: none; font-family: var(--font-mono); border: 1px solid var(--border); padding: 3px 8px; border-radius: 4px; }
-.charlas-yt-link:hover { color: var(--red); border-color: var(--red); }
-.charlas-messages   { display: flex; flex-direction: column; gap: 10px; max-height: 65vh; overflow-y: auto; padding-right: 4px; }
-.charla-msg         { display: flex; gap: 12px; background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 10px 14px; }
-.charla-num         { font-family: var(--font-mono); font-size: 10px; color: var(--muted); min-width: 22px; padding-top: 2px; }
-.charla-text        { display: flex; flex-direction: column; gap: 3px; flex: 1; }
-.charla-es          { color: var(--text); font-size: 13px; margin: 0; line-height: 1.45; }
-.charla-en          { color: var(--muted); font-size: 11px; font-style: italic; margin: 0; }
-.charlas-loading    { display: flex; flex-direction: column; align-items: center; gap: 12px; padding: 40px; color: var(--muted); }
-.charlas-error      { color: var(--muted); text-align: center; padding: 40px; font-size: 13px; }
-.charlas-disclaimer { color: var(--muted); font-size: 11px; text-align: center; margin-top: 14px; }
 
 /* ─── Highlights ─────────────────────────────────────────────────── */
 .hl-grid          { display: flex; flex-direction: column; gap: 24px; margin-top: 8px; }
