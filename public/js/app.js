@@ -377,7 +377,7 @@ function renderResultados(activeRace, activeType) {
               <div class="qual-pos ${pClass}">${r.pos}</div>
               <div class="qual-driver" style="border-left:3px solid ${color}">
                 ${tl(r.team, 24)}
-                ${flagImg(driverFlagMap[r.driver_name] || '', 12)}
+                ${flagImg(driverFlagMap[r.driver_name] || '', 10)}
                 <span class="qual-code">${r.driver_code || ''}</span>
                 <span class="qual-name">${r.driver_name}</span>
                 ${r.fastest_lap ? '<span class="fastest-icon" title="Vuelta rápida">⚡</span>' : ''}
@@ -471,7 +471,7 @@ function renderClasificaciones(activeRound, activeType) {
           <div class="qual-pos ${pClass}">${s.sq_pos}</div>
           <div class="qual-driver" style="border-left:3px solid ${color}">
             ${tl(s.team, 24)}
-            ${flagImg(driverFlagMap[s.driver_name] || '', 12)}
+            ${flagImg(driverFlagMap[s.driver_name] || '', 10)}
             <span class="qual-code">${s.driver_code}</span>
             <span class="qual-name">${s.driver_name}</span>
           </div>
@@ -509,7 +509,7 @@ function renderClasificaciones(activeRound, activeType) {
           <div class="qual-pos ${pClass}">${q.pos}</div>
           <div class="qual-driver" style="border-left:3px solid ${color}">
             ${tl(q.team, 24)}
-            ${flagImg(driverFlagMap[q.driver_name] || '', 12)}
+            ${flagImg(driverFlagMap[q.driver_name] || '', 10)}
             <span class="qual-code">${q.driver_code}</span>
             <span class="qual-name">${q.driver_name}</span>
           </div>
