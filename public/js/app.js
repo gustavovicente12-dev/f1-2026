@@ -317,26 +317,32 @@ function renderResumen() {
 function renderResultados(activeRace, activeType) {
   const cal       = appData.calendar || []
   const doneRaces = cal.filter(r => r.status === 'done')
+  const today     = new Date().toISOString().slice(0, 10)
+  const nextRace  = cal.find(r => r.status === 'next') || null
+  // Mostrar la próxima carrera con mensaje pendiente solo si la fecha ya llegó (es hoy o pasó)
+  const showNext  = nextRace && nextRace.date_str <= today
+  const sidebarRaces = showNext ? [...doneRaces, nextRace] : doneRaces
 
-  if (!doneRaces.length) { set('<p style="color:var(--muted);padding:40px">Sin carreras disputadas.</p>'); return }
+  if (!sidebarRaces.length) { set('<p style="color:var(--muted);padding:40px">Sin carreras disputadas.</p>'); return }
 
-  const race = doneRaces.find(r => r.name === activeRace) || doneRaces[doneRaces.length - 1]
+  const race      = sidebarRaces.find(r => r.name === activeRace) || doneRaces[doneRaces.length - 1] || sidebarRaces[sidebarRaces.length - 1]
+  const isPending = race.status === 'next'
   const type      = activeType || 'race'
   const hasSprint = race.has_sprint
 
   const driverFlagMap = {}
   ;(appData.drivers || []).forEach(d => { driverFlagMap[d.name] = d.flag })
 
-  const sidebarItems = doneRaces.map(r => `
+  const sidebarItems = sidebarRaces.map(r => `
     <div class="qual-race-item ${r.name === race.name ? 'active' : ''}" data-res-race="${r.name}">
       <span class="qual-race-round">R${r.round}</span>
       <span class="qual-race-flag">${flagImg(r.flag, 16)}</span>
       <span class="qual-race-name">${r.name}</span>
-      ${r.has_sprint ? '<span class="sprint-badge">S</span>' : ''}
+      ${r.status === 'next' ? '<span class="sprint-badge" style="background:var(--cyan);color:#000">HOY</span>' : r.has_sprint ? '<span class="sprint-badge">S</span>' : ''}
     </div>
   `).join('')
 
-  const typeTabs = hasSprint ? `
+  const typeTabs = (!isPending && hasSprint) ? `
     <div class="res-type-tabs">
       <button class="res-type-tab ${type === 'race' ? 'active' : ''}" data-type="race">Carrera</button>
       <button class="res-type-tab ${type === 'sprint' ? 'active' : ''}" data-type="sprint">Sprint</button>
@@ -344,7 +350,16 @@ function renderResultados(activeRace, activeType) {
   ` : ''
 
   let tableContent
-  {
+  if (isPending) {
+    tableContent = `
+      <div class="qual-pending">
+        <div class="qual-pending-icon">🏁</div>
+        <div class="qual-pending-title">Carrera en curso o pendiente de publicación</div>
+        <div class="qual-pending-sub">Los resultados aparecerán automáticamente en cuanto Jolpica publique los datos.</div>
+        <div class="qual-pending-dot"><span class="dot-live"></span> Actualizando…</div>
+      </div>
+    `
+  } else {
     const raceResults = (appData.results || [])
       .filter(r => r.race_name === race.name && r.race_type === type)
       .sort((a, b) => a.pos - b.pos)
