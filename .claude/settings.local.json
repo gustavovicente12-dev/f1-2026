@@ -53,7 +53,8 @@
       "WebFetch(domain:www.youtube.com)",
       "WebFetch(domain:vidiq.com)",
       "WebFetch(domain:www.noxinfluencer.com)",
-      "Bash(git commit -m 'fix: reduce nationality flag size 12→10px in results/qualifying rows *)"
+      "Bash(git commit -m 'fix: reduce nationality flag size 12→10px in results/qualifying rows *)",
+      "WebFetch(domain:noembed.com)"
     ]
   },
   "hooks": {
