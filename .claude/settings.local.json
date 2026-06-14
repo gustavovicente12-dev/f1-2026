@@ -49,7 +49,8 @@
       "WebFetch(domain:sports.yahoo.com)",
       "WebFetch(domain:www.mclaren.com)",
       "WebFetch(domain:www.formulaonehistory.com)",
-      "WebFetch(domain:www.autohebdof1.com)"
+      "WebFetch(domain:www.autohebdof1.com)",
+      "WebFetch(domain:www.youtube.com)"
     ]
   },
   "hooks": {
