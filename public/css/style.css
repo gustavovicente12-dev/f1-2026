@@ -1683,6 +1683,21 @@ a { color: inherit; text-decoration: none; }
 .hl-embed-wrap    { padding: 0 16px 16px; }
 .hl-iframe        { width: 100%; aspect-ratio: 16/9; border-radius: 6px; background: #000; }
 
+/* ─── Post-Racing ────────────────────────────────────────────────── */
+.section-sub      { font-size: 13px; color: var(--muted); margin: -8px 0 20px; }
+.pr-grid          { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; margin-top: 8px; }
+.pr-card          { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; cursor: pointer; transition: border-color .2s, transform .15s; }
+.pr-card:hover    { border-color: var(--red); transform: translateY(-2px); }
+.pr-thumb-wrap    { position: relative; }
+.pr-thumb         { width: 100%; aspect-ratio: 16/9; object-fit: cover; display: block; }
+.pr-play-btn      { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; background: rgba(0,0,0,.4); font-size: 36px; color: #fff; opacity: 0; transition: opacity .2s; }
+.pr-card:hover .pr-play-btn { opacity: 1; }
+.pr-info          { padding: 12px 14px; }
+.pr-header        { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; }
+.pr-round         { font-family: var(--font-mono); font-size: 11px; color: var(--muted); min-width: 22px; }
+.pr-name          { font-weight: 700; font-size: 14px; }
+.pr-label         { font-size: 11px; color: var(--muted); font-family: var(--font-mono); text-transform: uppercase; letter-spacing: .5px; }
+
 /* ─── Historia ───────────────────────────────────────────────────── */
 .hist-stats-row    { margin: 24px 0 36px; }
 .hist-top-label    { font-family: var(--font-title); font-size: 13px; color: var(--muted); letter-spacing: 2px; margin-bottom: 12px; }

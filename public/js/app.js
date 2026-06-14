@@ -101,7 +101,7 @@ async function fetchWithRetry(url, fallback, attempts = 4) {
 }
 
 async function fetchAll() {
-  const [stats, drivers, constructors, calendar, results, news, history, qualifying, highlights, declarations] = await Promise.all([
+  const [stats, drivers, constructors, calendar, results, news, history, qualifying, highlights, declarations, postracing] = await Promise.all([
     fetchWithRetry('/api/stats', {}),
     fetchWithRetry('/api/drivers', []),
     fetchWithRetry('/api/constructors', []),
@@ -112,6 +112,7 @@ async function fetchAll() {
     fetchWithRetry('/api/qualifying', []),
     fetchWithRetry('/api/highlights', []),
     fetchWithRetry('/api/declarations', []),
+    fetchWithRetry('/api/postracing', []),
   ])
   appData = {
     stats:        (stats && !stats.error) ? stats : {},
@@ -124,6 +125,7 @@ async function fetchAll() {
     qualifying:   safeArr(qualifying),
     highlights:   safeArr(highlights),
     declarations: safeArr(declarations),
+    postracing:   safeArr(postracing),
     teamradio:    [],
   }
 }
@@ -220,6 +222,7 @@ function renderTab(tab) {
     case 'historia':     renderHistoria(); break
     case 'highlights':     renderHighlights(); break
     case 'declaraciones':  renderDeclaraciones(); break
+    case 'postracing':     renderPostRacing(); break
   }
 }
 
@@ -1424,6 +1427,43 @@ function renderHighlights() {
 
 function openHighlight(videoId) {
   window.open(`https://www.youtube.com/watch?v=${videoId}`, '_blank')
+}
+
+// ── POST-RACING ────────────────────────────────────────────────────
+
+function renderPostRacing() {
+  const data = appData.postracing || []
+
+  if (!data.length) {
+    set(`
+      <div class="section-title">POST-RACING</div>
+      <div class="empty-state">No hay videos disponibles aún.</div>
+    `)
+    return
+  }
+
+  const cards = data.map(gp => `
+    <div class="pr-card" onclick="openHighlight('${gp.id}')">
+      <div class="pr-thumb-wrap">
+        <img class="pr-thumb" src="https://img.youtube.com/vi/${gp.id}/mqdefault.jpg" alt="${gp.race}" loading="lazy">
+        <div class="pr-play-btn">&#9654;&#65038;</div>
+      </div>
+      <div class="pr-info">
+        <div class="pr-header">
+          <span class="pr-round">R${gp.round}</span>
+          ${flagImg(gp.flag, 16)}
+          <span class="pr-name">${gp.race}</span>
+        </div>
+        <div class="pr-label">Drivers React After The Race</div>
+      </div>
+    </div>
+  `).join('')
+
+  set(`
+    <div class="section-title">POST-RACING</div>
+    <p class="section-sub">Los pilotos del podio ven los momentos más destacados de la carrera.</p>
+    <div class="pr-grid">${cards}</div>
+  `)
 }
 
 // ── Init ───────────────────────────────────────────────────────────
