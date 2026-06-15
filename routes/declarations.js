@@ -108,6 +108,9 @@ async function fetchLive() {
     for (const item of items) {
       const title = item.title || ''
 
+      // Skip pre-race/preview articles
+      if (/esperan?\b|a qué hora|cómo ver|parrilla de salida|previo\b|previa\b|pronóstico|strategy preview|busca\b/i.test(title)) continue
+
       // Must have a driver name
       const driver = detectDriver(title)
       if (!driver) continue

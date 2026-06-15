@@ -54,7 +54,12 @@
       "WebFetch(domain:vidiq.com)",
       "WebFetch(domain:www.noxinfluencer.com)",
       "Bash(git commit -m 'fix: reduce nationality flag size 12→10px in results/qualifying rows *)",
-      "WebFetch(domain:noembed.com)"
+      "WebFetch(domain:noembed.com)",
+      "WebFetch(domain:www.motorsport.com)",
+      "WebFetch(domain:www.autosport.com)",
+      "WebFetch(domain:www.racefans.net)",
+      "WebFetch(domain:racer.com)",
+      "WebFetch(domain:www.bbc.com)"
     ]
   },
   "hooks": {
