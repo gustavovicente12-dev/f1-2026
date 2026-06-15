@@ -155,26 +155,44 @@ async function fetchLive() {
 // ── Route ─────────────────────────────────────────────────────────
 router.get('/', async (req, res) => {
   try {
-    // Historical curated quotes
     let historical = []
     try {
       historical = JSON.parse(fs.readFileSync(DATA_FILE, 'utf8'))
     } catch { /* ok */ }
 
-    // Live quotes from motorsport.com RSS
     const live = await fetchLive()
 
-    // Only add live quotes for rounds not yet covered in the curated JSON.
-    // This prevents duplicates and avoids mixing noisy RSS quotes with curated ones.
+    // Only supplement rounds not yet in the curated JSON
     const coveredRounds = new Set(historical.map(d => d.round))
-    const fresh = live.filter(d => !coveredRounds.has(d.round))
 
-    const combined = [...historical, ...fresh]
-    combined.sort((a, b) => (b.round - a.round) || (b.date || '').localeCompare(a.date || ''))
+    // Max 2 quotes per driver per new round (avoid flooding)
+    const quota = {}
+    const fresh = live.filter(d => {
+      if (coveredRounds.has(d.round)) return false
+      const key = `${d.code}-${d.round}`
+      quota[key] = (quota[key] || 0) + 1
+      return quota[key] <= 2
+    })
 
-    res.json(combined)
+    // Auto-save new declarations so they persist across restarts
+    if (fresh.length > 0) {
+      const maxId = historical.length ? Math.max(...historical.map(d => d.id)) : 0
+      const toSave = fresh.map(({ _live, ...d }, i) => ({ ...d, id: maxId + i + 1 }))
+      try {
+        const updated = [...historical, ...toSave]
+        fs.writeFileSync(DATA_FILE, JSON.stringify(updated, null, 2))
+        historical = updated
+        const rounds = [...new Set(toSave.map(d => d.round))].join(', ')
+        console.log(`[declarations] +${toSave.length} declaraciones guardadas (rounds: ${rounds})`)
+      } catch (e) {
+        console.error('[declarations] Error al guardar:', e.message)
+        historical = [...historical, ...fresh]
+      }
+    }
+
+    historical.sort((a, b) => (b.round - a.round) || (b.date || '').localeCompare(a.date || ''))
+    res.json(historical)
   } catch (e) {
-    // Fallback: static file only
     try {
       res.json([...JSON.parse(fs.readFileSync(DATA_FILE, 'utf8'))].reverse())
     } catch {
