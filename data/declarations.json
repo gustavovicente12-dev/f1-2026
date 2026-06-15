@@ -1006,10 +1006,10 @@
     "round": 7,
     "date": "2026-06-15",
     "context": "Carrera",
-    "driver": "Oscar Piastri",
-    "code": "PIA",
-    "team": "McLaren",
-    "quote": "¡España! No me lo creía ni yo al cruzar la línea. Vinimos aquí pensando que no teníamos el ritmo de Mercedes o Ferrari en clasificación, pero en carrera el coche funcionó de una manera completamente diferente. El equipo tomó la decisión correcta con la estrategia y lo aprovechamos al máximo."
+    "driver": "Lewis Hamilton",
+    "code": "HAM",
+    "team": "Ferrari",
+    "quote": "Grazie a tutti Maranello, ¡muchísimas gracias! Me habéis ayudado a cumplir este sueño y no puedo agradecéroslo lo suficiente."
   },
   {
     "id": 93,
@@ -1017,10 +1017,10 @@
     "round": 7,
     "date": "2026-06-15",
     "context": "Carrera",
-    "driver": "Oscar Piastri",
-    "code": "PIA",
-    "team": "McLaren",
-    "quote": "Sabíamos que en carrera larga el coche tenía más potencial que lo que mostramos en clasificación. Fue un fin de semana complicado para llegar hasta aquí. Son los triunfos que más se disfrutan."
+    "driver": "Lewis Hamilton",
+    "code": "HAM",
+    "team": "Ferrari",
+    "quote": "De joven veía por televisión todos los éxitos de Ferrari y me preguntaba cómo sería ganar con este coche. Estaré eternamente agradecido y sí, espero que esta sea la primera de muchas."
   },
   {
     "id": 94,
@@ -1028,10 +1028,10 @@
     "round": 7,
     "date": "2026-06-15",
     "context": "Carrera",
-    "driver": "Lando Norris",
-    "code": "NOR",
-    "team": "McLaren",
-    "quote": "Un fin de semana de McLaren casi perfecto. Me alegra muchísimo que Oscar ganara después de todo lo que pasó esta temporada. Yo no lo puse fácil en la clasificación, así que sentarme aquí con el segundo lugar del equipo es un alivio enorme. Por fin un fin de semana limpio."
+    "driver": "Lewis Hamilton",
+    "code": "HAM",
+    "team": "Ferrari",
+    "quote": "Todas son especiales a su manera, pero esta es algo especial."
   },
   {
     "id": 95,
@@ -1042,7 +1042,7 @@
     "driver": "George Russell",
     "code": "RUS",
     "team": "Mercedes",
-    "quote": "Salir desde la pole y no ganar... duele. Pero tengo que reconocer que McLaren hoy fue simplemente más rápido en el ritmo de carrera. No encontramos la gestión de neumáticos que necesitábamos. Esto es el campeonato, así que hay que seguir."
+    "quote": "La principal conclusión de hoy son los puntos que hemos sumado para el campeonato."
   },
   {
     "id": 96,
@@ -1050,10 +1050,10 @@
     "round": 7,
     "date": "2026-06-15",
     "context": "Carrera",
-    "driver": "Lewis Hamilton",
-    "code": "HAM",
-    "team": "Ferrari",
-    "quote": "Cuarto en Barcelona con Ferrari. Hace un año me habría parecido un resultado decepcionante. Ahora mismo sé que estamos construyendo algo. El ritmo en las últimas vueltas fue muy bueno y hay cosas prometedoras de cara a Austria."
+    "driver": "George Russell",
+    "code": "RUS",
+    "team": "Mercedes",
+    "quote": "Me pareció que entramos en boxes muy pronto. Lewis se comprometió a hacer tres paradas. Creo que deberíamos haber seguido nuestra propia estrategia."
   },
   {
     "id": 97,
@@ -1064,7 +1064,7 @@
     "driver": "Andrea Kimi Antonelli",
     "code": "ANT",
     "team": "Mercedes",
-    "quote": "Un fin de semana para olvidar. Cuando el coche no trabaja como necesitas en viernes, todo se complica. Lo salvamos lo mejor que pudimos, pero hoy McLaren fue inalcanzable. Hay que analizar, entender y volver más fuertes en Austria."
+    "quote": "Estaba en el vértice de la curva 5 y, de repente, el coche simplemente se rindió."
   },
   {
     "id": 98,
@@ -1072,10 +1072,10 @@
     "round": 7,
     "date": "2026-06-15",
     "context": "Carrera",
-    "driver": "Max Verstappen",
-    "code": "VER",
-    "team": "Red Bull",
-    "quote": "Terminar P6 en Barcelona es mucho mejor de lo que esperábamos el viernes. El coche reaccionó bien en carrera y pude pelear por posiciones. Cada punto que sumamos en este momento es valioso."
+    "driver": "Andrea Kimi Antonelli",
+    "code": "ANT",
+    "team": "Mercedes",
+    "quote": "Es una preocupación porque ya hemos tenido varios problemas durante el año. Nuestro paquete es muy fuerte, pero es un punto en el que tenemos que trabajar porque estamos perdiendo muchos puntos en carreras como esta."
   },
   {
     "id": 99,
@@ -1083,9 +1083,152 @@
     "round": 7,
     "date": "2026-06-15",
     "context": "Carrera",
+    "driver": "Andrea Kimi Antonelli",
+    "code": "ANT",
+    "team": "Mercedes",
+    "quote": "Estoy muy feliz por Lewis porque tenemos una gran relación y siempre ha estado ahí para mí. Verle cumplir uno de sus sueños, que era ganar con Ferrari, ha sido muy bonito."
+  },
+  {
+    "id": 100,
+    "race": "España",
+    "round": 7,
+    "date": "2026-06-15",
+    "context": "Carrera",
     "driver": "Charles Leclerc",
     "code": "LEC",
     "team": "Ferrari",
-    "quote": "Salir desde el fondo después de la Q3 y terminar P5 es lo mejor que podíamos esperar. El ritmo de carrera fue sólido, pero arrancando tan atrás no puedo pelear por lo que quiero. Necesito tener un sábado decente para volver a estar donde debo estar."
+    "quote": "Perdí la dirección asistida y, con el Virtual Safety Car, no sé si habría cambiado mucho nuestra carrera; quizá la cuarta posición podría haber estado a mi alcance, pero las dos paradas creo que fueron un pequeño error por mi parte."
+  },
+  {
+    "id": 101,
+    "race": "España",
+    "round": 7,
+    "date": "2026-06-15",
+    "context": "Carrera",
+    "driver": "Charles Leclerc",
+    "code": "LEC",
+    "team": "Ferrari",
+    "quote": "Fred Vasseur se merece esta victoria tanto como todo el equipo, que ha trabajado muy duro, y me alegro mucho por ellos, pero sin duda el sentimiento principal que tendré al llegar a casa es de decepción."
+  },
+  {
+    "id": 102,
+    "race": "España",
+    "round": 7,
+    "date": "2026-06-15",
+    "context": "Carrera",
+    "driver": "Lando Norris",
+    "code": "NOR",
+    "team": "McLaren",
+    "quote": "No estábamos en la pelea. No estábamos luchando contra esos coches, eran demasiado rápidos."
+  },
+  {
+    "id": 103,
+    "race": "España",
+    "round": 7,
+    "date": "2026-06-15",
+    "context": "Carrera",
+    "driver": "Lando Norris",
+    "code": "NOR",
+    "team": "McLaren",
+    "quote": "Siento que hice una carrera muy buena, sinceramente. Pero hacer una carrera muy buena ya no significa que estés ganando."
+  },
+  {
+    "id": 104,
+    "race": "España",
+    "round": 7,
+    "date": "2026-06-15",
+    "context": "Carrera",
+    "driver": "Lando Norris",
+    "code": "NOR",
+    "team": "McLaren",
+    "quote": "Tenemos suerte de que Ferrari no tenga un motor mejor ahora mismo. Si tuvieran un motor mejor, estarían dominando. Si consiguen mejorar el motor, avergonzarán a todos."
+  },
+  {
+    "id": 105,
+    "race": "España",
+    "round": 7,
+    "date": "2026-06-15",
+    "context": "Carrera",
+    "driver": "Oscar Piastri",
+    "code": "PIA",
+    "team": "McLaren",
+    "quote": "No tengo respuestas ahora mismo. Estoy sorprendido de haber sufrido tanto."
+  },
+  {
+    "id": 106,
+    "race": "España",
+    "round": 7,
+    "date": "2026-06-15",
+    "context": "Carrera",
+    "driver": "Oscar Piastri",
+    "code": "PIA",
+    "team": "McLaren",
+    "quote": "Creo que Ferrari ha dado un gran paso adelante este fin de semana. Siempre han sido increíblemente rápidos en las curvas."
+  },
+  {
+    "id": 107,
+    "race": "España",
+    "round": 7,
+    "date": "2026-06-15",
+    "context": "Carrera",
+    "driver": "Max Verstappen",
+    "code": "VER",
+    "team": "Red Bull",
+    "quote": "Simplemente nos falta un poco en todos los aspectos."
+  },
+  {
+    "id": 108,
+    "race": "España",
+    "round": 7,
+    "date": "2026-06-15",
+    "context": "Carrera",
+    "driver": "Max Verstappen",
+    "code": "VER",
+    "team": "Red Bull",
+    "quote": "Creo que, en este momento, simplemente tenemos el cuarto coche más rápido. Quien introduce mejoras, da un paso adelante. Al final, todo depende de quién consiga la mayor mejora."
+  },
+  {
+    "id": 109,
+    "race": "España",
+    "round": 7,
+    "date": "2026-06-15",
+    "context": "Carrera",
+    "driver": "Carlos Sainz",
+    "code": "SAI",
+    "team": "Williams",
+    "quote": "No es donde prometimos estar este año. No es donde deberíamos estar."
+  },
+  {
+    "id": 110,
+    "race": "España",
+    "round": 7,
+    "date": "2026-06-15",
+    "context": "Carrera",
+    "driver": "Carlos Sainz",
+    "code": "SAI",
+    "team": "Williams",
+    "quote": "Es un poco la historia de toda la temporada. Carreras muy buenas, salidas muy buenas, qualis muy buenas, pero desgraciadamente este año no está pagando mucho con el coche que tenemos. Por muy buena carrera o clasificación que hagas, acabas fuera de los puntos."
+  },
+  {
+    "id": 111,
+    "race": "España",
+    "round": 7,
+    "date": "2026-06-15",
+    "context": "Carrera",
+    "driver": "Fernando Alonso",
+    "code": "ALO",
+    "team": "Aston Martin",
+    "quote": "Estamos sufriendo por rendimiento, pero también por fiabilidad. Todavía no somos un coche a prueba de balas y seguimos teniendo muchos problemas."
+  },
+  {
+    "id": 112,
+    "race": "España",
+    "round": 7,
+    "date": "2026-06-15",
+    "context": "Carrera",
+    "driver": "Fernando Alonso",
+    "code": "ALO",
+    "team": "Aston Martin",
+    "quote": "El Drivers Parade fue la mejor parte del fin de semana. Los aficionados fueron increíbles durante todo el fin de semana. Fue una sensación muy bonita y muy emocional para mí. Quizá sea la última vez en Barcelona."
   }
 ]
