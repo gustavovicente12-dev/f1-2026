@@ -69,8 +69,12 @@ function detectRound(text) {
 }
 
 function detectDriver(title) {
+  // Driver must be the grammatical subject: one of the first words before the colon.
+  // Avoids attributing quotes from "Wolff valora la victoria de Hamilton: '...'" to Hamilton.
+  const beforeColon = title.split(':')[0]
+  const firstWords  = beforeColon.split(/\s+/).slice(0, 3).join(' ')
   for (const [surname, info] of Object.entries(DRIVERS)) {
-    if (title.includes(surname)) return { surname, ...info }
+    if (firstWords.includes(surname)) return { surname, ...info }
   }
   return null
 }
@@ -83,9 +87,9 @@ function detectContext(text) {
 }
 
 function extractQuote(title) {
-  // "Driver [verb]: 'Quote'" — Spanish single-quote style
-  const m = title.match(/:\s*['"'«](.*?)['"'»]\s*$/)
-          || title.match(/['"'«](.*?)['"'»]/)
+  // Only accept quotes that follow a colon: "Driver [verb]: 'Quote'"
+  // This avoids picking up quotes embedded mid-sentence like "A Stroll no le 'importa...'
+  const m = title.match(/:\s*['"'‘’«](.*?)['"'’”»]\s*$/)
   if (m && m[1].length >= 10) return m[1].trim()
   return null
 }
@@ -160,9 +164,10 @@ router.get('/', async (req, res) => {
     // Live quotes from motorsport.com RSS
     const live = await fetchLive()
 
-    // Deduplicate: skip live entries that duplicate historical (same driver + round + first 20 chars)
-    const seen = new Set(historical.map(d => `${d.code}-${d.round}-${d.quote.slice(0, 20).toLowerCase()}`))
-    const fresh = live.filter(d => !seen.has(`${d.code}-${d.round}-${d.quote.slice(0, 20).toLowerCase()}`))
+    // Only add live quotes for rounds not yet covered in the curated JSON.
+    // This prevents duplicates and avoids mixing noisy RSS quotes with curated ones.
+    const coveredRounds = new Set(historical.map(d => d.round))
+    const fresh = live.filter(d => !coveredRounds.has(d.round))
 
     const combined = [...historical, ...fresh]
     combined.sort((a, b) => (b.round - a.round) || (b.date || '').localeCompare(a.date || ''))
