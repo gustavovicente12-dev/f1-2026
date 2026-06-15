@@ -108,7 +108,7 @@ router.get('/', async (req, res) => {
       merged[round] = { race: display, flag, round, id: v.id }
     }
 
-    res.json(Object.values(merged).sort((a, b) => a.round - b.round))
+    res.json(Object.values(merged).sort((a, b) => b.round - a.round))
   } catch (e) {
     console.error('[postracing] error:', e.message)
     res.json(SEED)
