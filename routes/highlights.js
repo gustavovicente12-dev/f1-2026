@@ -39,6 +39,7 @@ const SEED = [
   ]},
   { race: 'Gran Premio de España', flag: 'es', round: 7, videos: [
     { type: 'Clasificación', id: 'Q2fMM4H9bWY' },
+    { type: 'Carrera',       id: 'Ey8j_BlLvFM' },
   ]},
 ]
 
@@ -50,7 +51,8 @@ const RACE_INFO = {
   'miami':         { flag: 'us', round: 4,  display: 'Gran Premio de Miami' },
   'canadian':      { flag: 'ca', round: 5,  display: 'Gran Premio de Canadá' },
   'monaco':        { flag: 'mc', round: 6,  display: 'Gran Premio de Mónaco' },
-  'spanish':       { flag: 'es', round: 7,  display: 'Gran Premio de España' },
+  'spanish':            { flag: 'es', round: 7,  display: 'Gran Premio de España' },
+  'barcelona-catalunya':{ flag: 'es', round: 7,  display: 'Gran Premio de España' },
   'austrian':      { flag: 'at', round: 8,  display: 'Gran Premio de Austria' },
   'british':       { flag: 'gb', round: 9,  display: 'Gran Premio de Gran Bretaña' },
   'belgian':       { flag: 'be', round: 10, display: 'Gran Premio de Bélgica' },

@@ -999,5 +999,93 @@
     "code": "HAD",
     "team": "Red Bull",
     "quote": "Viernes difícil, sábado por la mañana difícil, y luego en clasificación parece que recogimos algo de ritmo. Ni siquiera sé cómo estamos a tres décimas de la pole cuando hemos estado a un segundo durante todo el fin de semana. Estar tan cerca del P3 y quedarse fuera duele."
+  },
+  {
+    "id": 92,
+    "race": "España",
+    "round": 7,
+    "date": "2026-06-15",
+    "context": "Carrera",
+    "driver": "Oscar Piastri",
+    "code": "PIA",
+    "team": "McLaren",
+    "quote": "¡España! No me lo creía ni yo al cruzar la línea. Vinimos aquí pensando que no teníamos el ritmo de Mercedes o Ferrari en clasificación, pero en carrera el coche funcionó de una manera completamente diferente. El equipo tomó la decisión correcta con la estrategia y lo aprovechamos al máximo."
+  },
+  {
+    "id": 93,
+    "race": "España",
+    "round": 7,
+    "date": "2026-06-15",
+    "context": "Carrera",
+    "driver": "Oscar Piastri",
+    "code": "PIA",
+    "team": "McLaren",
+    "quote": "Sabíamos que en carrera larga el coche tenía más potencial que lo que mostramos en clasificación. Fue un fin de semana complicado para llegar hasta aquí. Son los triunfos que más se disfrutan."
+  },
+  {
+    "id": 94,
+    "race": "España",
+    "round": 7,
+    "date": "2026-06-15",
+    "context": "Carrera",
+    "driver": "Lando Norris",
+    "code": "NOR",
+    "team": "McLaren",
+    "quote": "Un fin de semana de McLaren casi perfecto. Me alegra muchísimo que Oscar ganara después de todo lo que pasó esta temporada. Yo no lo puse fácil en la clasificación, así que sentarme aquí con el segundo lugar del equipo es un alivio enorme. Por fin un fin de semana limpio."
+  },
+  {
+    "id": 95,
+    "race": "España",
+    "round": 7,
+    "date": "2026-06-15",
+    "context": "Carrera",
+    "driver": "George Russell",
+    "code": "RUS",
+    "team": "Mercedes",
+    "quote": "Salir desde la pole y no ganar... duele. Pero tengo que reconocer que McLaren hoy fue simplemente más rápido en el ritmo de carrera. No encontramos la gestión de neumáticos que necesitábamos. Esto es el campeonato, así que hay que seguir."
+  },
+  {
+    "id": 96,
+    "race": "España",
+    "round": 7,
+    "date": "2026-06-15",
+    "context": "Carrera",
+    "driver": "Lewis Hamilton",
+    "code": "HAM",
+    "team": "Ferrari",
+    "quote": "Cuarto en Barcelona con Ferrari. Hace un año me habría parecido un resultado decepcionante. Ahora mismo sé que estamos construyendo algo. El ritmo en las últimas vueltas fue muy bueno y hay cosas prometedoras de cara a Austria."
+  },
+  {
+    "id": 97,
+    "race": "España",
+    "round": 7,
+    "date": "2026-06-15",
+    "context": "Carrera",
+    "driver": "Andrea Kimi Antonelli",
+    "code": "ANT",
+    "team": "Mercedes",
+    "quote": "Un fin de semana para olvidar. Cuando el coche no trabaja como necesitas en viernes, todo se complica. Lo salvamos lo mejor que pudimos, pero hoy McLaren fue inalcanzable. Hay que analizar, entender y volver más fuertes en Austria."
+  },
+  {
+    "id": 98,
+    "race": "España",
+    "round": 7,
+    "date": "2026-06-15",
+    "context": "Carrera",
+    "driver": "Max Verstappen",
+    "code": "VER",
+    "team": "Red Bull",
+    "quote": "Terminar P6 en Barcelona es mucho mejor de lo que esperábamos el viernes. El coche reaccionó bien en carrera y pude pelear por posiciones. Cada punto que sumamos en este momento es valioso."
+  },
+  {
+    "id": 99,
+    "race": "España",
+    "round": 7,
+    "date": "2026-06-15",
+    "context": "Carrera",
+    "driver": "Charles Leclerc",
+    "code": "LEC",
+    "team": "Ferrari",
+    "quote": "Salir desde el fondo después de la Q3 y terminar P5 es lo mejor que podíamos esperar. El ritmo de carrera fue sólido, pero arrancando tan atrás no puedo pelear por lo que quiero. Necesito tener un sábado decente para volver a estar donde debo estar."
   }
 ]
