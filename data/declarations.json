@@ -1230,5 +1230,115 @@
     "code": "ALO",
     "team": "Aston Martin",
     "quote": "El Drivers Parade fue la mejor parte del fin de semana. Los aficionados fueron increíbles durante todo el fin de semana. Fue una sensación muy bonita y muy emocional para mí. Quizá sea la última vez en Barcelona."
+  },
+  {
+    "id": 113,
+    "race": "Gran Bretaña",
+    "round": 9,
+    "date": "2026-07-04",
+    "context": "Sprint Quali",
+    "driver": "Lewis Hamilton",
+    "code": "HAM",
+    "team": "Ferrari",
+    "quote": "Amo este lugar y a esta afición. No puedo expresarles lo que significa todavía hoy este sueño: llegar a esta carrera, pensar en cada curva y en el fluir que puedes encontrar en este circuito cuando el set-up está bien."
+  },
+  {
+    "id": 114,
+    "race": "Gran Bretaña",
+    "round": 9,
+    "date": "2026-07-04",
+    "context": "Sprint Quali",
+    "driver": "Lewis Hamilton",
+    "code": "HAM",
+    "team": "Ferrari",
+    "quote": "Ha sido una sorpresa increíble. No esperábamos llegar a Silverstone y estar peleando por la primera fila."
+  },
+  {
+    "id": 115,
+    "race": "Gran Bretaña",
+    "round": 9,
+    "date": "2026-07-05",
+    "context": "Sprint",
+    "driver": "Andrea Kimi Antonelli",
+    "code": "ANT",
+    "team": "Mercedes",
+    "quote": "Los primeros diez giros fueron muy divertidos con Lewis. Los dos empujábamos muy fuerte."
+  },
+  {
+    "id": 116,
+    "race": "Gran Bretaña",
+    "round": 9,
+    "date": "2026-07-05",
+    "context": "Sprint",
+    "driver": "Andrea Kimi Antonelli",
+    "code": "ANT",
+    "team": "Mercedes",
+    "quote": "En cuanto entré en modo overtake, supe que mi oportunidad llegaría. En Stowe usé todo lo que tenía y pude adelantarle."
+  },
+  {
+    "id": 117,
+    "race": "Gran Bretaña",
+    "round": 9,
+    "date": "2026-07-05",
+    "context": "Sprint",
+    "driver": "Lewis Hamilton",
+    "code": "HAM",
+    "team": "Ferrari",
+    "quote": "Empujé todo lo que pude, di absolutamente todo. Pero chapeau a Kimi — tenemos que trabajar para reducir esa diferencia y poder seguirle el ritmo."
+  },
+  {
+    "id": 118,
+    "race": "Gran Bretaña",
+    "round": 9,
+    "date": "2026-07-05",
+    "context": "Sprint",
+    "driver": "Max Verstappen",
+    "code": "VER",
+    "team": "Red Bull",
+    "quote": "Al menos aprendimos qué no hacer."
+  },
+  {
+    "id": 119,
+    "race": "Gran Bretaña",
+    "round": 9,
+    "date": "2026-07-05",
+    "context": "Sprint",
+    "driver": "Lando Norris",
+    "code": "NOR",
+    "team": "McLaren",
+    "quote": "¡No aceptaremos nada que no sea la victoria! Quizás sea algo poco realista, pero daré un buen espectáculo. Ayer dimos uno bueno con el P3 en el sprint."
+  },
+  {
+    "id": 120,
+    "race": "Gran Bretaña",
+    "round": 9,
+    "date": "2026-07-05",
+    "context": "Clasificación",
+    "driver": "Andrea Kimi Antonelli",
+    "code": "ANT",
+    "team": "Mercedes",
+    "quote": "El impulso está ahí. Hacemos un gran trabajo con el equipo pero no podemos bajar la guardia. Lewis y Ferrari hacen un trabajo increíble. Red Bull y McLaren se acercan y George es muy rápido. Solo tenemos que seguir elevando el listón."
+  },
+  {
+    "id": 121,
+    "race": "Gran Bretaña",
+    "round": 9,
+    "date": "2026-07-05",
+    "context": "Clasificación",
+    "driver": "Charles Leclerc",
+    "code": "LEC",
+    "team": "Ferrari",
+    "quote": "Estoy contento. Han sido varias carreras difíciles en las que el feeling no era del todo correcto. Siempre había algo los domingos que nos impedía puntuar. Hoy es probablemente la primera vez que lo recuperé y es un buen paso en la dirección correcta."
+  },
+  {
+    "id": 122,
+    "race": "Gran Bretaña",
+    "round": 9,
+    "date": "2026-07-05",
+    "context": "Clasificación",
+    "driver": "Max Verstappen",
+    "code": "VER",
+    "team": "Red Bull",
+    "quote": "No tiene sentido competir en el GP de Gran Bretaña si Red Bull no consigue solucionar el problema de velocidad punta."
   }
 ]
