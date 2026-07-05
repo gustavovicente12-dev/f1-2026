@@ -1340,5 +1340,60 @@
     "code": "VER",
     "team": "Red Bull",
     "quote": "No tiene sentido competir en el GP de Gran Bretaña si Red Bull no consigue solucionar el problema de velocidad punta."
+  },
+  {
+    "id": 123,
+    "race": "Gran Bretaña",
+    "round": 9,
+    "date": "2026-07-05",
+    "context": "Carrera",
+    "driver": "Charles Leclerc",
+    "code": "LEC",
+    "team": "Ferrari",
+    "quote": "Los tiempos difíciles nunca duran. Solo los fuertes resisten."
+  },
+  {
+    "id": 124,
+    "race": "Gran Bretaña",
+    "round": 9,
+    "date": "2026-07-05",
+    "context": "Carrera",
+    "driver": "Charles Leclerc",
+    "code": "LEC",
+    "team": "Ferrari",
+    "quote": "Se siente increíble. El final no fue exactamente como lo habría soñado, pero el feeling durante toda la carrera era bueno."
+  },
+  {
+    "id": 125,
+    "race": "Gran Bretaña",
+    "round": 9,
+    "date": "2026-07-05",
+    "context": "Carrera",
+    "driver": "George Russell",
+    "code": "RUS",
+    "team": "Mercedes",
+    "quote": "Mi primer podio aquí, muy contento de estar en el podio. Tuve muy mala suerte con el pinchazo, pero luego mucha suerte con el safety car. Fue una pena para los aficionados no ver un final en pista, pero estoy muy feliz."
+  },
+  {
+    "id": 126,
+    "race": "Gran Bretaña",
+    "round": 9,
+    "date": "2026-07-05",
+    "context": "Carrera",
+    "driver": "Lewis Hamilton",
+    "code": "HAM",
+    "team": "Ferrari",
+    "quote": "Hoy simplemente no estuve a la altura. Cometí una salida anticipada y me costó una penalización de cinco segundos. Charles tenía más ritmo que yo."
+  },
+  {
+    "id": 127,
+    "race": "Gran Bretaña",
+    "round": 9,
+    "date": "2026-07-05",
+    "context": "Carrera",
+    "driver": "Andrea Kimi Antonelli",
+    "code": "ANT",
+    "team": "Mercedes",
+    "quote": "Algo está roto."
   }
 ]
