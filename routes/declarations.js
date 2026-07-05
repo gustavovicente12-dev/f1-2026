@@ -152,46 +152,45 @@ async function fetchLive() {
   return results
 }
 
+// ── Auto-save core (shared by route + background job) ─────────────
+async function checkAndSave() {
+  let historical = []
+  try { historical = JSON.parse(fs.readFileSync(DATA_FILE, 'utf8')) } catch { /* ok */ }
+
+  const live = await fetchLive()
+  const coveredRounds = new Set(historical.map(d => d.round))
+
+  const quota = {}
+  const fresh = live.filter(d => {
+    if (coveredRounds.has(d.round)) return false
+    const key = `${d.code}-${d.round}`
+    quota[key] = (quota[key] || 0) + 1
+    return quota[key] <= 2
+  })
+
+  if (fresh.length > 0) {
+    const maxId = historical.length ? Math.max(...historical.map(d => d.id)) : 0
+    const toSave = fresh.map(({ _live, ...d }, i) => ({ ...d, id: maxId + i + 1 }))
+    const updated = [...historical, ...toSave]
+    fs.writeFileSync(DATA_FILE, JSON.stringify(updated, null, 2))
+    const rounds = [...new Set(toSave.map(d => d.round))].join(', ')
+    console.log(`[declarations] +${toSave.length} declaraciones guardadas (rounds: ${rounds})`)
+    return updated
+  }
+  return historical
+}
+
+// ── Background auto-update cada 60 min ────────────────────────────
+setInterval(() => {
+  checkAndSave().catch(e => console.error('[declarations] auto-update error:', e.message))
+}, 60 * 60 * 1000)
+
 // ── Route ─────────────────────────────────────────────────────────
 router.get('/', async (req, res) => {
   try {
-    let historical = []
-    try {
-      historical = JSON.parse(fs.readFileSync(DATA_FILE, 'utf8'))
-    } catch { /* ok */ }
-
-    const live = await fetchLive()
-
-    // Only supplement rounds not yet in the curated JSON
-    const coveredRounds = new Set(historical.map(d => d.round))
-
-    // Max 2 quotes per driver per new round (avoid flooding)
-    const quota = {}
-    const fresh = live.filter(d => {
-      if (coveredRounds.has(d.round)) return false
-      const key = `${d.code}-${d.round}`
-      quota[key] = (quota[key] || 0) + 1
-      return quota[key] <= 2
-    })
-
-    // Auto-save new declarations so they persist across restarts
-    if (fresh.length > 0) {
-      const maxId = historical.length ? Math.max(...historical.map(d => d.id)) : 0
-      const toSave = fresh.map(({ _live, ...d }, i) => ({ ...d, id: maxId + i + 1 }))
-      try {
-        const updated = [...historical, ...toSave]
-        fs.writeFileSync(DATA_FILE, JSON.stringify(updated, null, 2))
-        historical = updated
-        const rounds = [...new Set(toSave.map(d => d.round))].join(', ')
-        console.log(`[declarations] +${toSave.length} declaraciones guardadas (rounds: ${rounds})`)
-      } catch (e) {
-        console.error('[declarations] Error al guardar:', e.message)
-        historical = [...historical, ...fresh]
-      }
-    }
-
-    historical.sort((a, b) => (b.round - a.round) || (b.date || '').localeCompare(a.date || ''))
-    res.json(historical)
+    const historical = await checkAndSave()
+    const sorted = [...historical].sort((a, b) => (b.round - a.round) || (b.date || '').localeCompare(a.date || ''))
+    res.json(sorted)
   } catch (e) {
     try {
       res.json([...JSON.parse(fs.readFileSync(DATA_FILE, 'utf8'))].reverse())

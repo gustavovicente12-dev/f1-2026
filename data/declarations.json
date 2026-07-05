@@ -1395,5 +1395,104 @@
     "code": "ANT",
     "team": "Mercedes",
     "quote": "Algo está roto."
+  },
+  {
+    "id": 128,
+    "race": "Austria",
+    "round": 8,
+    "date": "2026-06-27",
+    "context": "Clasificación",
+    "driver": "George Russell",
+    "code": "RUS",
+    "team": "Mercedes",
+    "quote": "Me siento increíble. Fue una vuelta alucinante. Vi la bandera amarilla y frené mucho en esa curva — llevaba medio segundo de ventaja, y salí de la última curva con dos décimas y media por delante. Era una sola amarilla, no doble, así que debería estar bien. Fue un día duro, pero fue muy especial conseguir esa vuelta. Estoy muy orgulloso del trabajo que hicimos todos."
+  },
+  {
+    "id": 129,
+    "race": "Austria",
+    "round": 8,
+    "date": "2026-06-27",
+    "context": "Clasificación",
+    "driver": "Charles Leclerc",
+    "code": "LEC",
+    "team": "Ferrari",
+    "quote": "Estoy relativamente contento. Las últimas semanas han sido bastante duras, así que solo quería un fin de semana limpio y una clasificación limpia para arrancar bien mañana. Salir segundo es un buen punto de partida."
+  },
+  {
+    "id": 130,
+    "race": "Austria",
+    "round": 8,
+    "date": "2026-06-28",
+    "context": "Carrera",
+    "driver": "George Russell",
+    "code": "RUS",
+    "team": "Mercedes",
+    "quote": "Psicológicamente han sido unas carreras muy duras para mí. He recibido muchísimo apoyo y eso me ha ayudado a seguir siendo resiliente y a continuar creyendo en mí mismo."
+  },
+  {
+    "id": 131,
+    "race": "Austria",
+    "round": 8,
+    "date": "2026-06-28",
+    "context": "Carrera",
+    "driver": "George Russell",
+    "code": "RUS",
+    "team": "Mercedes",
+    "quote": "Fue increíble volver al primer peldaño. Ha pasado un tiempo, así que definitivamente disfrutaré esta noche. Mucho trabajo duro con el equipo para volver a estar a punto."
+  },
+  {
+    "id": 132,
+    "race": "Austria",
+    "round": 8,
+    "date": "2026-06-28",
+    "context": "Carrera",
+    "driver": "George Russell",
+    "code": "RUS",
+    "team": "Mercedes",
+    "quote": "Max y Red Bull fueron increíblemente rápidos este fin de semana, chapeau a ellos. Tuve que empujar cada vuelta y sabía lo rápidos que eran los de detrás. Kimi ha sido extraordinariamente rápido esta temporada, así que en cada vuelta miraba el marcador."
+  },
+  {
+    "id": 133,
+    "race": "Austria",
+    "round": 8,
+    "date": "2026-06-28",
+    "context": "Carrera",
+    "driver": "Max Verstappen",
+    "code": "VER",
+    "team": "Red Bull",
+    "quote": "Las primeras vueltas fueron bastante divertidas y luego me costó gestionar los neumáticos. El coche estuvo en un buen punto intermedio durante la mitad de la carrera, pero luego surgieron algunos problemas que me impidieron encontrar el ritmo adecuado."
+  },
+  {
+    "id": 134,
+    "race": "Austria",
+    "round": 8,
+    "date": "2026-06-28",
+    "context": "Carrera",
+    "driver": "Andrea Kimi Antonelli",
+    "code": "ANT",
+    "team": "Mercedes",
+    "quote": "Tuve problemas con los frenos, pero después del cambio de neumáticos me recompuse y el ritmo final fue muy fuerte. Fue una pena incorporarme a la fiesta un poco tarde."
+  },
+  {
+    "id": 135,
+    "race": "Austria",
+    "round": 8,
+    "date": "2026-06-28",
+    "context": "Carrera",
+    "driver": "Andrea Kimi Antonelli",
+    "code": "ANT",
+    "team": "Mercedes",
+    "quote": "Me fastidió terminar tan cerca de los dos primeros sin tener un par de vueltas más para jugar mis cartas. Habría sido bonito intentarlo."
+  },
+  {
+    "id": 136,
+    "race": "Austria",
+    "round": 8,
+    "date": "2026-06-28",
+    "context": "Carrera",
+    "driver": "Lewis Hamilton",
+    "code": "HAM",
+    "team": "Ferrari",
+    "quote": "No sé si podremos igualar el motor Mercedes en 2026. La diferencia es muy grande."
   }
 ]
