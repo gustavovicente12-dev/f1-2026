@@ -66,7 +66,7 @@ router.get('/', async (req, res) => {
 
     res.json(
       sessions
-        .filter(s => s && s.results.length > 0)
+        .filter(s => s && (s.results.length > 0 || s.pending))
         .sort((a, b) => a.round - b.round)
     )
   } catch (e) {
