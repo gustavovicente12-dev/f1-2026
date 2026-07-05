@@ -1494,5 +1494,104 @@
     "code": "HAM",
     "team": "Ferrari",
     "quote": "No sé si podremos igualar el motor Mercedes en 2026. La diferencia es muy grande."
+  },
+  {
+    "id": 137,
+    "race": "Australia",
+    "round": 1,
+    "date": "2026-03-07",
+    "context": "Clasificación",
+    "driver": "Franco Colapinto",
+    "code": "COL",
+    "team": "Alpine",
+    "quote": "En Q1 estuvimos bien. En Q2 perdí mucho agarre trasero y no pude completar una buena vuelta."
+  },
+  {
+    "id": 138,
+    "race": "Australia",
+    "round": 1,
+    "date": "2026-03-08",
+    "context": "Carrera",
+    "driver": "Franco Colapinto",
+    "code": "COL",
+    "team": "Alpine",
+    "quote": "Solo fue muy peligroso. No esperaba que Liam estuviera tan cerca en la primera frenada. Podría haber sido mucho peor."
+  },
+  {
+    "id": 139,
+    "race": "China",
+    "round": 2,
+    "date": "2026-03-15",
+    "context": "Carrera",
+    "driver": "Franco Colapinto",
+    "code": "COL",
+    "team": "Alpine",
+    "quote": "Fue muy difícil con el neumático medio, mucho granulado, el coche no era agradable de conducir. Deberíamos haber sumado muchos más puntos de los que conseguimos y eso es lo frustrante."
+  },
+  {
+    "id": 140,
+    "race": "Japón",
+    "round": 3,
+    "date": "2026-03-29",
+    "context": "Carrera",
+    "driver": "Franco Colapinto",
+    "code": "COL",
+    "team": "Alpine",
+    "quote": "El safety car me volvió a afectar. Iba detrás de Liam gestionando los neumáticos y parecía bastante más rápido que él. Y al final Liam terminó noveno."
+  },
+  {
+    "id": 141,
+    "race": "Mónaco",
+    "round": 6,
+    "date": "2026-05-25",
+    "context": "Carrera",
+    "driver": "Franco Colapinto",
+    "code": "COL",
+    "team": "Alpine",
+    "quote": "La carrera en Mónaco fue un desafío y, en general, fue un fin de semana difícil. No pudimos progresar durante la carrera y nos quedamos atrapados en un tren de autos fuera de los puntos."
+  },
+  {
+    "id": 142,
+    "race": "España",
+    "round": 7,
+    "date": "2026-06-15",
+    "context": "Carrera",
+    "driver": "Franco Colapinto",
+    "code": "COL",
+    "team": "Alpine",
+    "quote": "Por supuesto, entiendo la decisión. Seguimos trabajando de cara al futuro. Fue un día muy positivo. Sumamos puntos con ambos autos, muchos puntos otra vez."
+  },
+  {
+    "id": 143,
+    "race": "España",
+    "round": 7,
+    "date": "2026-06-15",
+    "context": "Carrera",
+    "driver": "Franco Colapinto",
+    "code": "COL",
+    "team": "Alpine",
+    "quote": "Creo que fue una carrera muy buena, muy sólida. Como equipo demostramos que éramos realmente fuertes y pudimos revertir un resultado complicado."
+  },
+  {
+    "id": 144,
+    "race": "Austria",
+    "round": 8,
+    "date": "2026-06-28",
+    "context": "Carrera",
+    "driver": "Franco Colapinto",
+    "code": "COL",
+    "team": "Alpine",
+    "quote": "Fue una salida bastante mala y después pude recuperar algunas posiciones, pero no tenía mucho más ritmo que los coches que tenía delante. Era bastante difícil adelantar y había mucho sobrecalentamiento. Los neumáticos traseros sufrían muchísimo."
+  },
+  {
+    "id": 145,
+    "race": "Austria",
+    "round": 8,
+    "date": "2026-06-28",
+    "context": "Carrera",
+    "driver": "Franco Colapinto",
+    "code": "COL",
+    "team": "Alpine",
+    "quote": "No podíamos acelerar bien a la salida de las curvas. Tuvimos muchísimos problemas de tracción, cargando mucha energía sobre los neumáticos en las frenadas y sin nada de tracción a la salida de las curvas lentas."
   }
 ]
