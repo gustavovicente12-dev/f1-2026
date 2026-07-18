@@ -378,11 +378,12 @@ function renderResultados(activeRace, activeType) {
           const ptsHtml = r.dnf
             ? '<span class="dnf-badge">DNF</span>'
             : `${r.pts} pts${penalty ? ` <span class="penalty-badge">${penalty}</span>` : ''}`
+          const photo   = DRIVER_PHOTOS[r.driver_code] || ''
           return `
             <div class="qual-row ${pClass} ${r.dnf ? 'result-dnf' : ''}" data-driver="${r.driver_name}" style="cursor:pointer">
               <div class="qual-pos ${pClass}">${r.pos}</div>
               <div class="qual-driver" style="border-left:3px solid ${color}">
-                ${tl(r.team, 24)}
+                ${photo ? `<img class="qual-driver-photo" src="${photo}" alt="${r.driver_code}" style="border-color:${color}">` : tl(r.team, 24)}
                 ${flagImg(driverFlagMap[r.driver_name] || '', 10)}
                 <span class="qual-code">${r.driver_code || ''}</span>
                 <span class="qual-name">${r.driver_name}</span>
@@ -472,11 +473,12 @@ function renderClasificaciones(activeRound, activeType) {
       const raceResult = s.race_pos === 'DNF'
         ? '<span class="dnf-badge">DNF</span>'
         : `P${s.race_pos}`
+      const photo = DRIVER_PHOTOS[s.driver_code] || ''
       return `
         <div class="qual-row ${pClass}" data-driver="${s.driver_name}" style="cursor:pointer">
           <div class="qual-pos ${pClass}">${s.sq_pos}</div>
           <div class="qual-driver" style="border-left:3px solid ${color}">
-            ${tl(s.team, 24)}
+            ${photo ? `<img class="qual-driver-photo" src="${photo}" alt="${s.driver_code}" style="border-color:${color}">` : tl(s.team, 24)}
             ${flagImg(driverFlagMap[s.driver_name] || '', 10)}
             <span class="qual-code">${s.driver_code}</span>
             <span class="qual-name">${s.driver_name}</span>
@@ -510,11 +512,12 @@ function renderClasificaciones(activeRound, activeType) {
       const pClass = posClass(q.pos)
       const isQ3   = q.q3 !== '—'
       const isQ2   = q.q2 !== '—'
+      const photo  = DRIVER_PHOTOS[q.driver_code] || ''
       return `
         <div class="qual-row ${pClass}" data-driver="${q.driver_name}" style="cursor:pointer">
           <div class="qual-pos ${pClass}">${q.pos}</div>
           <div class="qual-driver" style="border-left:3px solid ${color}">
-            ${tl(q.team, 24)}
+            ${photo ? `<img class="qual-driver-photo" src="${photo}" alt="${q.driver_code}" style="border-color:${color}">` : tl(q.team, 24)}
             ${flagImg(driverFlagMap[q.driver_name] || '', 10)}
             <span class="qual-code">${q.driver_code}</span>
             <span class="qual-name">${q.driver_name}</span>
@@ -571,18 +574,21 @@ function renderClasificaciones(activeRound, activeType) {
 function renderPilotos() {
   const drivers = appData.drivers || []
 
-  const tableRows = drivers.map(d => `
+  const tableRows = drivers.map(d => {
+    const photo = DRIVER_PHOTOS[d.short] || ''
+    return `
     <tr class="driver-clickable" data-driver="${d.name}" style="cursor:pointer">
       <td class="pos ${posClass(d.pos)}">${d.pos}</td>
-      <td class="flag">${flagImg(d.flag, 16)}</td>
+      <td class="flag">${photo ? `<img class="standings-driver-photo" src="${photo}" alt="${d.short}" style="border-color:${tc(d.team)}">` : flagImg(d.flag, 16)}</td>
       <td>
+        ${flagImg(d.flag, 12)}
         <strong>${d.name}</strong>
         <span class="driver-num">#${d.number}</span>
       </td>
       <td><span class="team-cell" data-team="${d.team}" style="cursor:pointer">${tl(d.team, 18)}<span style="color:${tc(d.team)}">${d.team}</span></span></td>
       <td class="pts">${d.pts}</td>
     </tr>
-  `).join('')
+  `}).join('')
 
   const cards = drivers.map(d => {
     const photoUrl = DRIVER_PHOTOS[d.short] || ''

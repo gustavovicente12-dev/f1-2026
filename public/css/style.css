@@ -355,7 +355,17 @@ a { color: inherit; text-decoration: none; }
 .standings-table .pos.p2 { color: #C0C0C0; }
 .standings-table .pos.p3 { color: #CD7F32; }
 .standings-table .pts { font-family: var(--font-mono); font-weight: 700; color: var(--cyan); }
-.standings-table .flag { font-size: 18px; }
+.standings-table .flag { font-size: 18px; width: 44px; }
+.standings-driver-photo {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: top center;
+  border: 2px solid;
+  background: var(--surf2);
+  display: block;
+}
 .driver-num {
   display: inline-block;
   font-family: var(--font-mono);
@@ -1711,6 +1721,16 @@ a { color: inherit; text-decoration: none; }
 .qual-pos.p3       { color:#CD7F32; }
 
 .qual-driver       { display:flex; align-items:center; gap:8px; padding-left:8px; }
+.qual-driver-photo {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: top center;
+  border: 2px solid;
+  background: var(--surf2);
+  flex-shrink: 0;
+}
 .qual-code         { font-family:var(--font-mono); font-size:12px; font-weight:700; color:var(--text); min-width:32px; }
 .qual-name         { font-size:13px; color:var(--muted); }
 .qual-team         { font-size:12px; font-weight:500; }
