@@ -277,17 +277,21 @@ function renderResumen() {
     </div>
   `
 
-  const miniRows = (top5Drivers || []).map(d => `
+  const miniRows = (top5Drivers || []).map(d => {
+    const photo = DRIVER_PHOTOS[d.short] || ''
+    return `
     <div class="mini-row driver-clickable" data-driver="${d.name}" style="cursor:pointer">
       <div class="pos-num ${posClass(d.pos)}">${d.pos}</div>
-      <div class="driver-flag">${flagImg(d.flag, 16)}</div>
+      ${photo
+        ? `<img class="mini-driver-photo" src="${photo}" alt="${d.short}" style="border-color:${tc(d.team)}">`
+        : `<div class="driver-flag">${flagImg(d.flag, 16)}</div>`}
       <div>
-        <div class="driver-name-mini">${d.name}</div>
+        <div class="driver-name-mini">${flagImg(d.flag, 12)} ${d.name}</div>
         <div class="driver-team-mini" style="color:${tc(d.team)}">${d.team}</div>
       </div>
       <div class="pts-badge">${d.pts}</div>
     </div>
-  `).join('')
+  `}).join('')
 
   set(`
     <div class="hero-grid">${heroCards}</div>

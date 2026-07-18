@@ -280,7 +280,7 @@ a { color: inherit; text-decoration: none; }
 }
 .mini-row {
   display: grid;
-  grid-template-columns: 28px 24px 1fr auto;
+  grid-template-columns: 28px 40px 1fr auto;
   align-items: center;
   gap: 10px;
   padding: 10px 16px;
@@ -299,7 +299,17 @@ a { color: inherit; text-decoration: none; }
 .pos-num.p2 { color: #C0C0C0; }
 .pos-num.p3 { color: #CD7F32; }
 .driver-flag { font-size: 16px; }
-.driver-name-mini { font-weight: 600; font-size: 13px; }
+.mini-driver-photo {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: top center;
+  border: 2px solid;
+  background: var(--surf2);
+  flex-shrink: 0;
+}
+.driver-name-mini { font-weight: 600; font-size: 13px; display: flex; align-items: center; gap: 4px; }
 .driver-team-mini { font-size: 11px; color: var(--muted); }
 .team-dot {
   width: 8px; height: 8px;
